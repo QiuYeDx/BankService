@@ -8,8 +8,9 @@ class Transaction
 {
 public:
     Transaction();
+    Transaction(QDateTime time, float amount, int type);
     QDateTime time;
-    int amount;
+    float amount;
     int type;
 };
 

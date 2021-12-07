@@ -15,12 +15,13 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
+    quene.cpp \
+    takenumber.cpp  \
+    user.cpp \
     showresult.cpp \
     storage.cpp \
-    takenumber.cpp \
     windows.cpp
     transaction.cpp
-
 
 HEADERS += \
     account.h \
@@ -28,10 +29,12 @@ HEADERS += \
     counter.h \
     mainmenu.h \
     mainwindow.h \
+    quene.h \
+    takenumber.h \
+    user.h \
     showresult.h \
     storage.h \
-    takenumber.h \
-    windows.h
+    windows.h \
     transaction.h
 
 FORMS += \
