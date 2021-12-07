@@ -6,7 +6,7 @@ Register::Register(QWidget *parent) :
     ui(new Ui::Register)
 {
     ui->setupUi(this);
-    this->setFixedSize(300, 200);
+    this->setFixedSize(300, 250);
     this->setWindowTitle("银行系统 · 注册");
 
     btn_reg = new QPushButton(this);
@@ -19,6 +19,9 @@ Register::Register(QWidget *parent) :
     pass = new QLineEdit(this);
     pass->setGeometry(100, 85, 160, 30);
 
+    num = new QLineEdit(this);
+    num->setGeometry(100, 130, 160, 30);
+
     label_user = new QLabel(this);
     label_user->setGeometry(40, 40, 60, 30);
     label_user->setText("用户名:");
@@ -26,6 +29,10 @@ Register::Register(QWidget *parent) :
     label_pass = new QLabel(this);
     label_pass->setGeometry(45, 85, 60, 30);
     label_pass->setText("密码:");
+
+    label_num = new QLabel(this);
+    label_num->setGeometry(40, 130, 60, 30);
+    label_num->setText("窗口数:");
 
     QObject::connect(btn_reg, SIGNAL(clicked()), this, SLOT(regist()));
 }
@@ -42,6 +49,7 @@ void Register::showUp(){
 void Register::regist(){
     //注册
     //待完善
-    QString username = label_user->text();
-    QString password = label_pass->text();
+    QString username = user->text();
+    QString password = pass->text();
+    QString number = num->text();
 }
