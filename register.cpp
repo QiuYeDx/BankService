@@ -1,5 +1,8 @@
 #include "register.h"
 #include "ui_register.h"
+#include <QDebug>
+
+using namespace Qt;
 
 Register::Register(QWidget *parent) :
     QMainWindow(parent),
@@ -60,4 +63,31 @@ void Register::regist(){
     QString password = pass->text();
     QString number = num->text();
     QString number_2 = num_2->text();
+
+
+//    QFile data("admin.txt");
+//    if(data.open(QIODevice::WriteOnly | QIODevice::Text))
+//       // qDebug()<<"can't open file";
+//    QTextStream out(&data);
+//    out<<username<<endl
+//         <<password<<endl
+//        <<number<<endl
+//       <<number_2<<endl;
+//    data.close();
+//    qDebug()<<"success"<<endl;
+//    qDebug()<<username<<endl;
+
+        QFile file;
+        file.setFileName("admin.txt");
+        if(file.open(QIODevice::WriteOnly|QIODevice::Text))
+        {
+            QTextStream in(&file);
+            in<<username<<endl
+             <<password<<endl
+            <<number<<endl
+           <<number_2<<endl;
+            qDebug()<<"success"<<endl;
+        }
+        file.close();
+
 }
