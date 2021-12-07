@@ -7,8 +7,6 @@
 class Transaction
 {
 public:
-    Transaction();
-    Transaction(QDateTime time, float amount, int type);
     QDateTime time;
     float amount;
     int type;
