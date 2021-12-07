@@ -40,11 +40,11 @@ TakeNumber::~TakeNumber()
 //一般取号调用函数
 void TakeNumber::getNormal(){
     quene_a.push(++client_number,1);
-    quene_a.output();
+    //quene_a.output();
 }
 
 //特殊取号调用函数
 void TakeNumber::getSpecial(){
     quene_b.push(++client_number,2);
-    quene_b.output();
+    //quene_b.output();
 }
