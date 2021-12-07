@@ -22,8 +22,8 @@ public:
 private:
     Ui::Register *ui;
     QPushButton *btn_reg;
-    QLineEdit *user, *pass, *num;
-    QLabel *label_user, *label_pass, *label_num;
+    QLineEdit *user, *pass, *num, *num_2;
+    QLabel *label_user, *label_pass, *label_num, *label_num_2;
 };
 
 #endif // REGISTER_H
