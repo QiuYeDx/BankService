@@ -13,7 +13,7 @@ int AccountBook::save()
     QTextStream out(&data);
     for(auto it = this->entry.begin();it!=this->entry.end();it++)
     {
-        out << it->first <<Qt::endl;
+        out << it->first <<endl;
     }
 
 }
