@@ -6,7 +6,7 @@ TakeNumber::TakeNumber(QWidget *parent) :
     ui(new Ui::TakeNumber)
 {
     ui->setupUi(this);
-    this->setFixedSize(380, 280);
+    this->setFixedSize(380, 320);
     this->setWindowTitle("银行系统 · 取票");
     table = new QTableWidget(this);
     table->setColumnCount(3);
@@ -14,7 +14,14 @@ TakeNumber::TakeNumber(QWidget *parent) :
     QStringList header;
     header<<tr("ID")<<tr("窗口")<<tr("status");
     table->setHorizontalHeaderLabels(header);
-    //table->show();
+
+    btn_normal = new QPushButton(this);
+    btn_normal->setGeometry(40, 260, 120, 40);
+    btn_normal->setText("特殊取号");
+
+    btn_special = new QPushButton(this);
+    btn_special->setGeometry(200, 260, 120, 40);
+    btn_special->setText("特殊取号");
 }
 
 TakeNumber::~TakeNumber()
