@@ -21,7 +21,7 @@ public:
     ~MainWindow();
 
 private slots:
-
+    void logIn();
 private:
     Ui::MainWindow *ui;
     MainMenu *ui_mainMenu;
