@@ -12,7 +12,9 @@ class Windows;
 class Windows : public QMainWindow
 {
     Q_OBJECT
-
+public slots:
+    void ServiceEnd();
+    void updateInformation(int index);
 public:
     explicit Windows(QWidget *parent = nullptr);
     ~Windows();
