@@ -13,7 +13,7 @@ public:
     QDateTime tm_start;
     QDateTime tm_end;
 public:
-    User(int type);
+    User(int id,int type);
     //User();
     User(User& origin);
 };

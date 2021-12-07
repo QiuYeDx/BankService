@@ -16,11 +16,11 @@ bool Quene::isEmpty() const
     else return false;
 }
 
-bool Quene::push(int ID)
+bool Quene::push(int ID,int type)
 {
     if(count<length)
     {
-        data[rear]=new User(ID);
+        data[rear]=new User(ID,type);
         rear++;
         count++;
         return true;

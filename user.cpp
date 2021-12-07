@@ -1,7 +1,8 @@
 #include "user.h"
 
-User::User(int type)
+User::User(int id,int type)
 {
+    ID=id;
     this->type=type;
     status=0;
     tm_quene=QDateTime::currentDateTime();
