@@ -16,7 +16,6 @@ SOURCES += \
     mainmenu.cpp \
     mainwindow.cpp \
     quene.cpp \
-    quenemanager.cpp \
     takenumber.cpp  \
     user.cpp \
     showresult.cpp \
