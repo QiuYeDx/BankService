@@ -18,9 +18,9 @@ int calloc(int type)
             {
                 for(int i = 0; i<NORMCNT+SPECCNT;i++)
                 {
-                    if(counter[i].occupied==false)
+                    if(counters[i].occupied==false)
                     {
-                        counter[i].occupied = true;
+                        counters[i].occupied = true;
                         return i;
                     }
                 }
@@ -31,9 +31,9 @@ int calloc(int type)
             {
                 for(int i = 0;i<NORMCNT;i++)
                 {
-                    if(counter[i].occupied == false)
+                    if(counters[i].occupied == false)
                     {
-                        counter[i].occupied = true;
+                        counters[i].occupied = true;
                         return i;
                     }
                 }
@@ -51,9 +51,9 @@ int calloc(int type)
         {
             for(int i = NORMCNT;i<SPECCNT+NORMCNT;i++)
             {
-                if(counter[i].occupied == false)
+                if(counters[i].occupied == false)
                 {
-                    counter[i].occupied = true;
+                    counters[i].occupied = true;
                     return i;
                 }
             }

@@ -58,8 +58,9 @@ void Windows::Service(){
         //待完善
     }else{
         //结束业务
-        //user结束时间，user内容存盘
-        //根据user窗口的号码判断当前窗口的类型
+        counters[(label_2->text()).toInt()].user->tm_end = QDateTime::currentDateTime();
+        //user内容存盘
+        //
         //为新用户开个窗口
         //待完善
     }
