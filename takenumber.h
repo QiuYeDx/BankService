@@ -2,7 +2,8 @@
 #define TAKENUMBER_H
 
 #include <QMainWindow>
-
+#include <QPushButton>
+#include <QTableWidget>
 namespace Ui {
 class TakeNumber;
 }
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::TakeNumber *ui;
+    QPushButton *btn_normal, *btn_special;
+    QTableWidget *table;
 };
 
 #endif // TAKENUMBER_H
