@@ -2,12 +2,20 @@
 
 AccountBook::AccountBook()
 {
-
+    //todo
 }
 
-void AccountBook::save()
+int AccountBook::save()
 {
-    //todo
+    QFile data("accountbook.txt");
+    if(!data.open(QIODevice::WriteOnly | QIODevice::Text))
+        return WRONG;
+    QTextStream out(&data);
+    for(auto it = this->entry.begin();it!=this->entry.end();it++)
+    {
+        out << it->first <<Qt::endl;
+    }
+
 }
 
 Account* AccountBook::query(QString id, QString password)
