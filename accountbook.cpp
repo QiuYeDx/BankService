@@ -1,5 +1,6 @@
 #include "accountbook.h"
 using namespace Qt;
+
 AccountBook::AccountBook()
 {
     //todo

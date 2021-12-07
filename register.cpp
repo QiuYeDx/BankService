@@ -77,8 +77,8 @@ void Register::regist(){
 //    qDebug()<<"success"<<endl;
 //    qDebug()<<username<<endl;
 
-        QFile file;
-        file.setFileName("admin.txt");
+        QFile file("admin.txt");
+       // file.setFileName("admin.txt");
         if(file.open(QIODevice::WriteOnly|QIODevice::Text))
         {
             QTextStream in(&file);
@@ -86,7 +86,8 @@ void Register::regist(){
              <<password<<endl
             <<number<<endl
            <<number_2<<endl;
-            qDebug()<<"success"<<endl;
+            qDebug()<<"success"<<username<<endl;
+
         }
         file.close();
 

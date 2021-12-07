@@ -1,4 +1,5 @@
 #include "quene.h"
+using namespace Qt;
 
 Quene::Quene(int len)
 {
@@ -48,7 +49,6 @@ User* Quene::pop()
 
 void Quene::output()
 {
-    using namespace Qt;
     qDebug()<<"quene"<<endl;
     for(int i=front;i<rear;i++)
         qDebug()<<data[i]->ID<<"   "<<data[i]->type<<"  "<<data[i]->status<<endl;
