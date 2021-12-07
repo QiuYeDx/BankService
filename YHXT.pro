@@ -9,6 +9,9 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    account.cpp \
+    accountbook.cpp \
+    counter.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
@@ -16,14 +19,20 @@ SOURCES += \
     storage.cpp \
     takenumber.cpp \
     windows.cpp
+    transaction.cpp
+
 
 HEADERS += \
+    account.h \
+    accountbook.h \
+    counter.h \
     mainmenu.h \
     mainwindow.h \
     showresult.h \
     storage.h \
     takenumber.h \
     windows.h
+    transaction.h
 
 FORMS += \
     mainmenu.ui \
