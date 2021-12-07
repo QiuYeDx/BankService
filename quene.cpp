@@ -46,4 +46,12 @@ User* Quene::pop()
     }
 }
 
+void Quene::output()
+{
+    qDebug()<<"quene"<<endl;
+    for(int i=front;i<rear;i++)
+        qDebug()<<data[i]->ID<<"   "<<data[i]->type<<"  "<<data[i]->status<<endl;
+
+}
+
 
