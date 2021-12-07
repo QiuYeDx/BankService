@@ -40,9 +40,6 @@ MainMenu::~MainMenu()
     delete ui;
 }
 
-void MainMenu::showUp(){
-    this->show();
-}
 
 void MainMenu::showQuHao(){
     ui_takeNumber->show();

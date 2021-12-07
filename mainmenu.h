@@ -15,7 +15,6 @@ class MainMenu : public QMainWindow
 {
     Q_OBJECT
 public slots:
-    void showUp();
     void showQuHao();
     void showChuangKou();
     void showZhanShi();
