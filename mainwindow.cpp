@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
+extern QString filepath ;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -46,9 +48,30 @@ MainWindow::~MainWindow()
 void MainWindow::logIn(){
     QString username = user->text();
     QString password = pass->text();
-    ui_mainMenu->show();
-    this->close();
+
     //登陆，待完善
+    QString USERNAME;
+    QString PASSWORD;
+    QString NUMBER1;
+    QString NUMBER2;
+    QFile file(filepath+"/admin.txt");
+    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream in(&file);
+        USERNAME = in.readLine();
+        PASSWORD = in.readLine();
+        NUMBER1 = in.readLine();
+        NUMBER2 = in.readLine();
+        norm_cnt=NUMBER1.toInt();
+        spec_cnt=NUMBER2.toInt();
+    }
+    file.close();
+
+    if(username==USERNAME&&password==PASSWORD)
+    {
+         ui_mainMenu->show();
+         this->close();
+    }
     //如果成功登陆，则执行ui_mainMenu->show();显示主菜单窗口
     //并执行this->close();关闭登陆窗口。
 }

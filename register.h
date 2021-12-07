@@ -8,6 +8,8 @@
 #include <QFile>
 #include <QTextStream>
 
+extern QString filepath ;
+
 namespace Ui {
 class Register;
 }

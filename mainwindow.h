@@ -7,6 +7,11 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
+#include <QFile>
+#include <QTextStream>
+
+extern int norm_cnt;
+extern int spec_cnt;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

@@ -1,6 +1,7 @@
 #include "register.h"
 #include "ui_register.h"
 #include <QDebug>
+#include <QDir>
 
 using namespace Qt;
 
@@ -64,20 +65,9 @@ void Register::regist(){
     QString number = num->text();
     QString number_2 = num_2->text();
 
-
-//    QFile data("admin.txt");
-//    if(data.open(QIODevice::WriteOnly | QIODevice::Text))
-//       // qDebug()<<"can't open file";
-//    QTextStream out(&data);
-//    out<<username<<endl
-//         <<password<<endl
-//        <<number<<endl
-//       <<number_2<<endl;
-//    data.close();
-//    qDebug()<<"success"<<endl;
-//    qDebug()<<username<<endl;
-
-        QFile file("admin.txt");
+    if(username.length()>0&&password.length()>0&&number.toInt()!=0&&number_2.toInt()!=0)//如果number输入的是字符串或者不输入转为int都为0
+    {
+        QFile file(filepath+"/admin.txt");
        // file.setFileName("admin.txt");
         if(file.open(QIODevice::WriteOnly|QIODevice::Text))
         {
@@ -86,9 +76,8 @@ void Register::regist(){
              <<password<<endl
             <<number<<endl
            <<number_2<<endl;
-            qDebug()<<"success"<<username<<endl;
-
         }
         file.close();
-
+        this->close();
+    }
 }
