@@ -1,5 +1,7 @@
 #include "accountbook.h"
 
+using namespace Qt;
+
 AccountBook::AccountBook()
 {
     //todo
@@ -13,15 +15,15 @@ int AccountBook::save()
     QTextStream out(&data);
     for(auto it = this->entry.begin();it!=this->entry.end();it++)
     {
-        out << it->first << Qt::endl;
-        out << it->second.password << Qt::endl;
-        out << it->second.Balance << Qt::endl;
-        out << it->second.container.size() << Qt::endl;
+        out << it->first << endl;
+        out << it->second.password << endl;
+        out << it->second.Balance << endl;
+        out << it->second.container.size() << endl;
         for(auto ita = it->second.container.begin(); ita!= it->second.container.end();ita++)
         {
-            out << (ita->time).toString() << Qt::endl;
-            out << ita->amount << Qt::endl;
-            out << ita->type <<Qt::endl;
+            out << (ita->time).toString() << endl;
+            out << ita->amount << endl;
+            out << ita->type <<endl;
         }
     }
 
