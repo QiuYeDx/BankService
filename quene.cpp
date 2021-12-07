@@ -16,11 +16,11 @@ bool Quene::isEmpty() const
     else return false;
 }
 
-bool Quene::push(User *apd)
+bool Quene::push(int ID)
 {
     if(count<length)
     {
-        data[rear]=apd;
+        data[rear]=new User(ID);
         rear++;
         count++;
         return true;
@@ -34,6 +34,7 @@ User* Quene::pop()
         return nullptr;
     else
     {
+        data[front]->tm_start=QDateTime::currentDateTime();
         User* temp=new User(*data[front]);
         for(int i=0;i<rear-1;i++)
         {
