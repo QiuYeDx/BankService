@@ -46,6 +46,8 @@ MainWindow::~MainWindow()
 void MainWindow::logIn(){
     QString username = user->text();
     QString password = pass->text();
+    ui_mainMenu->show();
+    this->close();
     //登陆，待完善
     //如果成功登陆，则执行ui_mainMenu->show();显示主菜单窗口
     //并执行this->close();关闭登陆窗口。
