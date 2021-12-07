@@ -5,6 +5,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
+#include <QFile>
+#include <QTextStream>
+
 namespace Ui {
 class Register;
 }
