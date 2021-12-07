@@ -3,10 +3,10 @@
 
 #include <QMainWindow>
 #include <mainmenu.h>
+#include <register.h>
 #include <QPushButton>
 #include <QLineEdit>
 #include <QLabel>
-//#include <QTableWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,9 +25,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     MainMenu *ui_mainMenu;
+    Register *ui_register;
     QPushButton *btn_login, *btn_reg;
     QLineEdit *user, *pass;
     QLabel *label_user, *label_pass;
-    //QTableWidget *table_widget;
 };
 #endif // MAINWINDOW_H

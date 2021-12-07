@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFixedSize(300, 200);
     this->setWindowTitle("银行系统 · 登陆");
     ui_mainMenu = new MainMenu();
+    ui_register = new Register();
 
     btn_login = new QPushButton(this);
     btn_login->setGeometry(60, 140, 80, 40);
@@ -33,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     label_pass->setText("密码:");
 
     QObject::connect(btn_login, SIGNAL(clicked()), ui_mainMenu, SLOT(showUp()));
+    QObject::connect(btn_reg, SIGNAL(clicked()), ui_register, SLOT(showUp()));
     QObject::connect(btn_login, SIGNAL(clicked()), this, SLOT(close()));    //之后添加到成功登陆下面
 
 }

@@ -16,6 +16,7 @@ SOURCES += \
     mainmenu.cpp \
     mainwindow.cpp \
     quene.cpp \
+    register.cpp \
     takenumber.cpp  \
     user.cpp \
     showresult.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     mainwindow.h \
     quene.h \
     quenemanager.h \
+    register.h \
     takenumber.h \
     user.h \
     showresult.h \
@@ -41,6 +43,7 @@ HEADERS += \
 FORMS += \
     mainmenu.ui \
     mainwindow.ui \
+    register.ui \
     showresult.ui \
     storage.ui \
     takenumber.ui \
