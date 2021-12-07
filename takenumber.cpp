@@ -29,7 +29,7 @@ TakeNumber::TakeNumber(QWidget *parent) :
     btn_special->setText("特殊取号");
 
     QObject::connect(btn_normal, SIGNAL(clicked()), this, SLOT(getNormal()));
-    QObject::connect(btn_normal, SIGNAL(clicked()), this, SLOT(getSpecial()));
+    QObject::connect(btn_special, SIGNAL(clicked()), this, SLOT(getSpecial()));
 }
 
 TakeNumber::~TakeNumber()
