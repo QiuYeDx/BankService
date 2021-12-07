@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->setFixedSize(300, 200);
     this->setWindowTitle("银行系统 · 登陆");
     ui_mainMenu = new MainMenu();
-    ui_mainMenu->setWindowTitle("银行系统 · 菜单");
-    ui_mainMenu->setFixedSize(300, 300);
 
     btn_login = new QPushButton(this);
     btn_login->setGeometry(60, 140, 80, 40);
@@ -35,13 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     label_pass->setText("密码:");
 
     QObject::connect(btn_login, SIGNAL(clicked()), ui_mainMenu, SLOT(showUp()));
-    /*table_widget = new QTableWidget(this);
-    table_widget->setColumnCount(4);
-    table_widget->setGeometry(100, 100, 500, 250);
-    QStringList header;
-    header<<tr("name")<<tr("last modify time")<<tr("type")<<tr("size");
-    table_widget->setHorizontalHeaderLabels(header);
-    table_widget->show();*/
+    QObject::connect(btn_login, SIGNAL(clicked()), this, SLOT(close()));    //之后添加到成功登陆下面
 
 }
 

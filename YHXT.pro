@@ -12,17 +12,26 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
-    takenumber.cpp
+    showresult.cpp \
+    storage.cpp \
+    takenumber.cpp \
+    windows.cpp
 
 HEADERS += \
     mainmenu.h \
     mainwindow.h \
-    takenumber.h
+    showresult.h \
+    storage.h \
+    takenumber.h \
+    windows.h
 
 FORMS += \
     mainmenu.ui \
     mainwindow.ui \
-    takenumber.ui
+    showresult.ui \
+    storage.ui \
+    takenumber.ui \
+    windows.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
