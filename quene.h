@@ -15,7 +15,7 @@ private:
 public:
     Quene(int len);
     bool isEmpty() const;
-    bool push(User*apd);//讲用户指针传入,因此每个用户都需要new一下
+    bool push(int ID);//讲用户指针传入,因此每个用户都需要new一下
     User* pop();
 };
 
