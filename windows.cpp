@@ -19,9 +19,9 @@ Windows::Windows(QWidget *parent) :
     comboBox = new QComboBox(this);
     comboBox->setGeometry(40, 40, 220, 30);
     comboBox->clear(); //清除列表
-    for (int i=1;i<=8;i++)
+    for (int i=1;i<=NORMCNT;i++)
         comboBox->addItem(QString::asprintf(">>「一般窗口」---%d号窗口<<",i));
-    for (int i=9;i<=13;i++)
+    for (int i=NORMCNT+1;i<=NORMCNT+SPECCNT;i++)
         comboBox->addItem(QString::asprintf(">>「特殊窗口」---%d号窗口<<",i));
 
     label_1 = new QLabel(this);
@@ -41,7 +41,6 @@ Windows::Windows(QWidget *parent) :
     label_4->setText(counters[0].occupied?"业务办理中...":"空闲中...");
 
     QObject::connect(btn_switch, SIGNAL(clicked()), this, SLOT(Service()));
-    QObject::connect(btn_switch, SIGNAL(clicked()), this, SLOT(updateInformation(int)));
     QObject::connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateInformation(int)));
 }
 
@@ -50,14 +49,17 @@ Windows::~Windows()
     delete ui;
 }
 
-//结束函数
+//业务函数
 void Windows::Service(){
     if(btn_switch->text() == "开始业务"){
+        //开始业务
         btn_switch->setText("结束业务");
-        counters[label_2->text().toInt()].occupied = true;
-
+        label_4->setText("业务办理中...");
+        counters[label_2->text().toInt()-1].occupied = true;
+        //待完善
     }else{
-
+        //结束业务
+        //待完善
     }
 }
 
