@@ -12,12 +12,16 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
-    takenumber.cpp
+    quene.cpp \
+    takenumber.cpp  \
+    user.cpp
 
 HEADERS += \
     mainmenu.h \
     mainwindow.h \
-    takenumber.h
+    quene.h \
+    takenumber.h \
+    user.h
 
 FORMS += \
     mainmenu.ui \
