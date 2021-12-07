@@ -54,4 +54,15 @@ void Quene::output()
 
 }
 
+User* Quene::findMinimunID()
+{
+    int i=0;
+    while(i<rear)
+    {
+        if(data[i]->counter==-1)
+            return data[i];
+    }
+    return nullptr;
+}
+
 
