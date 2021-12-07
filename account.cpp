@@ -23,7 +23,10 @@ int Account::makeTrans(QDateTime time, float amount, int type)
 {
     if(type == IN)
     {
-        Transaction t{time, amount, type};
+        Transaction t;
+        t.amount = amount;
+        t.time = time;
+        t.type = type;
         this->container.insert(container.end(),t);
         this->Balance += amount;
         return SUCCESS;
@@ -34,7 +37,10 @@ int Account::makeTrans(QDateTime time, float amount, int type)
         {
             return WRONG;
         }
-        Transaction t{time, amount, type};
+        Transaction t;
+        t.amount = amount;
+        t.time = time;
+        t.type = type;
         this->container.insert(container.end(), t);
         this->Balance -= amount;
         return SUCCESS;

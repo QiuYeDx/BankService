@@ -14,7 +14,8 @@ public:
     QDateTime tm_end;
 public:
     User(int type);
-    User();
+    //User();
+    User(User& origin);
 };
 
 #endif // USER_H

@@ -34,8 +34,7 @@ User* Quene::pop()
         return nullptr;
     else
     {
-        User* temp=new User;
-        temp=data[front];
+        User* temp=new User(*data[front]);
         for(int i=0;i<rear-1;i++)
         {
             data[i]=data[i+1];
