@@ -55,10 +55,12 @@ void Windows::Service(){
         //开始业务
         btn_switch->setText("结束业务");
         label_4->setText("业务办理中...");
-        counters[label_2->text().toInt()-1].occupied = true;
         //待完善
     }else{
         //结束业务
+        //user结束时间，user内容存盘
+        //根据user窗口的号码判断当前窗口的类型
+        //为新用户开个窗口
         //待完善
     }
 }

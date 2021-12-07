@@ -6,6 +6,7 @@ User::User(int id,int type)
     this->type=type;
     status=0;
     tm_quene=QDateTime::currentDateTime();
+    this->counter = -1;
 }
 
 
