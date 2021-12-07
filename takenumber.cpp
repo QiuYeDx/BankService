@@ -22,9 +22,22 @@ TakeNumber::TakeNumber(QWidget *parent) :
     btn_special = new QPushButton(this);
     btn_special->setGeometry(210, 260, 120, 40);
     btn_special->setText("特殊取号");
+
+    QObject::connect(btn_normal, SIGNAL(clicked()), this, SLOT(getNormal()));
+    QObject::connect(btn_normal, SIGNAL(clicked()), this, SLOT(getSpecial()));
 }
 
 TakeNumber::~TakeNumber()
 {
     delete ui;
+}
+
+//一般取号调用函数
+void TakeNumber::getNormal(){
+
+}
+
+//特殊取号调用函数
+void TakeNumber::getSpecial(){
+
 }

@@ -11,7 +11,9 @@ class TakeNumber;
 class TakeNumber : public QMainWindow
 {
     Q_OBJECT
-
+public slots:
+    void getNormal();
+    void getSpecial();
 public:
     explicit TakeNumber(QWidget *parent = nullptr);
     ~TakeNumber();

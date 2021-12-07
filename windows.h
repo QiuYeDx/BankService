@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QLabel>
+#include <QComboBox>
 namespace Ui {
 class Windows;
 }
@@ -20,6 +21,7 @@ private:
     Ui::Windows *ui;
     QPushButton *btn_switch;
     QLabel *label_1, *label_2, *label_3, *label_4;
+    QComboBox *comboBox;
 };
 
 #endif // WINDOWS_H
