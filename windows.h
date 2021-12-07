@@ -2,7 +2,8 @@
 #define WINDOWS_H
 
 #include <QMainWindow>
-
+#include <QPushButton>
+#include <QLabel>
 namespace Ui {
 class Windows;
 }
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::Windows *ui;
+    QPushButton *btn_switch;
+    QLabel *label_1, *label_2, *label_3, *label_4;
 };
 
 #endif // WINDOWS_H

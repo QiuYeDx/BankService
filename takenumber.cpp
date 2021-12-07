@@ -16,11 +16,11 @@ TakeNumber::TakeNumber(QWidget *parent) :
     table->setHorizontalHeaderLabels(header);
 
     btn_normal = new QPushButton(this);
-    btn_normal->setGeometry(40, 260, 120, 40);
-    btn_normal->setText("特殊取号");
+    btn_normal->setGeometry(50, 260, 120, 40);
+    btn_normal->setText("一般取号");
 
     btn_special = new QPushButton(this);
-    btn_special->setGeometry(200, 260, 120, 40);
+    btn_special->setGeometry(210, 260, 120, 40);
     btn_special->setText("特殊取号");
 }
 

@@ -2,7 +2,7 @@
 #define SHOWRESULT_H
 
 #include <QMainWindow>
-
+#include <QLabel>
 namespace Ui {
 class ShowResult;
 }
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::ShowResult *ui;
+    QLabel *label_1, *label_2, *Label_3, *label_4;
 };
 
 #endif // SHOWRESULT_H
