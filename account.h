@@ -11,7 +11,7 @@ class Account
 public:
     Account();
     QString password;
-    int Balance;
+    float Balance;
     std::vector<Transaction> container;
     int changePassword(QString password, QString newpassword); //改密码，密码错误返回-1，成功返回0，有宏
     int makeTrans(QDateTime time, float amount, int type); //IN 1 OUT -1

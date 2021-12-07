@@ -16,11 +16,11 @@ bool Quene::isEmpty() const
     else return false;
 }
 
-bool Quene::push(int ID)
+bool Quene::push(int ID,int type)
 {
     if(count<length)
     {
-        data[rear]=new User(ID);
+        data[rear]=new User(ID,type);
         rear++;
         count++;
         return true;
@@ -44,6 +44,14 @@ User* Quene::pop()
         count--;
         return temp;
     }
+}
+
+void Quene::output()
+{
+    qDebug()<<"quene"<<endl;
+    for(int i=front;i<rear;i++)
+        qDebug()<<data[i]->ID<<"   "<<data[i]->type<<"  "<<data[i]->status<<endl;
+
 }
 
 
