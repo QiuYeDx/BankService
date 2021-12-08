@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QFile>
+#include <QDate>
 
 extern QString filepath;
 
@@ -17,6 +19,7 @@ class ShowResult : public QMainWindow
 public:
     explicit ShowResult(QWidget *parent = nullptr);
     ~ShowResult();
+    void getResult();
 
 private:
     Ui::ShowResult *ui;

@@ -2,6 +2,8 @@
 #include "ui_windows.h"
 #include "counter.h"
 
+using namespace Qt;
+
 Windows::Windows(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Windows)
@@ -60,15 +62,19 @@ void Windows::Service(){
         //结束业务
         counters[(label_2->text()).toInt()].user->tm_end = QDateTime::currentDateTime();
         //user内容存盘
-        //
-        QFile file(filepath+"/result.txt");
-       // file.setFileName("admin.txt");
-        if(file.open(QIODevice::WriteOnly|QIODevice::Text))
+        QDate date=QDate::currentDate();
+        QFile file(filepath+"/result"+date.toString("yyyymmdd")+".txt");
+        if(file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append))
         {
             QTextStream in(&file);
-
+            in<<counters[(label_2->text()).toInt()].user->ID<<" "
+               <<counters[(label_2->text()).toInt()].user->type<<" "
+              <<counters[(label_2->text()).toInt()].user->tm_quene.toString("hhmmss")<<" "
+             <<counters[(label_2->text()).toInt()].user->tm_start.toString("hhmmss")<<" "
+            <<counters[(label_2->text()).toInt()].user->tm_end.toString("hhmmss")<<endl;
         }
         file.close();
+
         //为新用户开个窗口
         //待完善
     }

@@ -66,4 +66,11 @@ User* Quene::findMinimunID()
     return nullptr;
 }
 
+User* Quene::findLastOne()
+{
+    if(count==0)
+        return nullptr;
+    else return data[rear-1];
+}
+
 

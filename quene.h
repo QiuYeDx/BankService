@@ -19,6 +19,7 @@ public:
     User* pop();
     void output();
     User* findMinimunID();//寻找到ID最小的用户，并返回他的指针，未找到则返回空指针
+    User* findLastOne();
 };
 
 #endif // QUENE_H
