@@ -22,6 +22,7 @@ Register::Register(QWidget *parent) :
 
     pass = new QLineEdit(this);
     pass->setGeometry(100, 85, 160, 30);
+    pass->setEchoMode(QLineEdit::PasswordEchoOnEdit);
 
     num = new QLineEdit(this);
     num->setGeometry(100, 130, 160, 30);

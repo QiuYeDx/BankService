@@ -10,6 +10,7 @@
 #include <QFile>
 #include <QTextStream>
 #include "counter.h"
+#include <QMessageBox>
 
 extern int norm_cnt;
 extern int spec_cnt;

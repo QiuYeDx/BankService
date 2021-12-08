@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     pass = new QLineEdit(this);
     pass->setGeometry(100, 85, 160, 30);
+    pass->setEchoMode(QLineEdit::Password);
 
     label_user = new QLabel(this);
     label_user->setGeometry(40, 40, 60, 30);
@@ -69,12 +70,15 @@ void MainWindow::logIn(){
     }
     file.close();
 
+    //如果成功登陆，则执行ui_mainMenu->show();显示主菜单窗口
+    //并执行this->close();关闭登陆窗口。
     if(username==USERNAME&&password==PASSWORD)
     {
         ui_mainMenu = new MainMenu();
          ui_mainMenu->show();
          this->close();
+    }else{
+        QMessageBox::critical(0 , "登陆失败" , "请检查用户名和密码!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
     }
-    //如果成功登陆，则执行ui_mainMenu->show();显示主菜单窗口
-    //并执行this->close();关闭登陆窗口。
+
 }
