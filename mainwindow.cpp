@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 extern QString filepath ;
-
+extern std::vector<Counter> counters;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     this->setFixedSize(300, 200);
     this->setWindowTitle("银行系统 · 登陆");
-    ui_mainMenu = new MainMenu();
+//    ui_mainMenu = new MainMenu();
     ui_register = new Register();
 
     btn_login = new QPushButton(this);
@@ -64,11 +64,14 @@ void MainWindow::logIn(){
         NUMBER2 = in.readLine();
         norm_cnt=NUMBER1.toInt();
         spec_cnt=NUMBER2.toInt();
+        counters.resize(norm_cnt+spec_cnt);
+
     }
     file.close();
 
     if(username==USERNAME&&password==PASSWORD)
     {
+        ui_mainMenu = new MainMenu();
          ui_mainMenu->show();
          this->close();
     }

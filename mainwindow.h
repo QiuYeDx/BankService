@@ -9,6 +9,7 @@
 #include <QLabel>
 #include <QFile>
 #include <QTextStream>
+#include "counter.h"
 
 extern int norm_cnt;
 extern int spec_cnt;

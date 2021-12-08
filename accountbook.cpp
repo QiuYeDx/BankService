@@ -1,5 +1,5 @@
 #include "accountbook.h"
-using namespace Qt;
+//using namespace Qt;
 
 AccountBook::AccountBook()
 {

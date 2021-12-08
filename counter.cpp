@@ -16,7 +16,7 @@ int calloc(int type)
         {
             if(quene_b.isEmpty())
             {
-                for(int i = 0; i<NORMCNT+SPECCNT;i++)
+                for(int i = 0; i<norm_cnt+spec_cnt;i++)
                 {
                     if(counters[i].occupied==false)
                     {
@@ -29,7 +29,7 @@ int calloc(int type)
             }
             else
             {
-                for(int i = 0;i<NORMCNT;i++)
+                for(int i = 0;i<norm_cnt;i++)
                 {
                     if(counters[i].occupied == false)
                     {
@@ -49,7 +49,7 @@ int calloc(int type)
             return -1;
         else
         {
-            for(int i = NORMCNT;i<SPECCNT+NORMCNT;i++)
+            for(int i = norm_cnt;i<spec_cnt+norm_cnt;i++)
             {
                 if(counters[i].occupied == false)
                 {

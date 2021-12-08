@@ -1,9 +1,7 @@
 #include "windows.h"
 #include "ui_windows.h"
 #include "counter.h"
-#define NORMCNT 8
-#define SPECCNT 4
-extern Counter counters[NORMCNT+SPECCNT];
+
 Windows::Windows(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Windows)
@@ -19,9 +17,11 @@ Windows::Windows(QWidget *parent) :
     comboBox = new QComboBox(this);
     comboBox->setGeometry(40, 40, 220, 30);
     comboBox->clear(); //清除列表
-    for (int i=1;i<=NORMCNT;i++)
+    for (int i=1;i<=norm_cnt;i++)
+    {
         comboBox->addItem(QString::asprintf(">>「一般窗口」---%d号窗口<<",i));
-    for (int i=NORMCNT+1;i<=NORMCNT+SPECCNT;i++)
+    }
+    for (int i=norm_cnt+1;i<=norm_cnt+spec_cnt;i++)
         comboBox->addItem(QString::asprintf(">>「特殊窗口」---%d号窗口<<",i));
 
     label_1 = new QLabel(this);
