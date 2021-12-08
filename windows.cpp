@@ -61,6 +61,14 @@ void Windows::Service(){
         counters[(label_2->text()).toInt()].user->tm_end = QDateTime::currentDateTime();
         //user内容存盘
         //
+        QFile file(filepath+"/result.txt");
+       // file.setFileName("admin.txt");
+        if(file.open(QIODevice::WriteOnly|QIODevice::Text))
+        {
+            QTextStream in(&file);
+
+        }
+        file.close();
         //为新用户开个窗口
         //待完善
     }

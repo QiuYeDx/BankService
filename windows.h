@@ -5,6 +5,10 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QComboBox>
+#include <QFile>
+
+extern QString filepath ;
+
 namespace Ui {
 class Windows;
 }

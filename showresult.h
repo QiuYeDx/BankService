@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QLabel>
+
+extern QString filepath;
+
 namespace Ui {
 class ShowResult;
 }
