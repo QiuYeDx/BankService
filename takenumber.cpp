@@ -1,6 +1,7 @@
 #include "takenumber.h"
 #include "ui_takenumber.h"
-#include"quene.h"
+#include "quene.h"
+#include "user.h"
 
 extern Quene quene_a;
 extern Quene quene_b;
@@ -44,6 +45,9 @@ TakeNumber::~TakeNumber()
 //一般取号调用函数
 void TakeNumber::getNormal(){
     quene_a.push(++client_number,1);
+    User *tmp = quene_a.findLastOne();
+    if(tmp!=nullptr)
+        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter), tmp->counter==-1?"---":"业务中");
     //todo加个calloc
     //quene_a.output();
 }
@@ -51,6 +55,9 @@ void TakeNumber::getNormal(){
 //特殊取号调用函数
 void TakeNumber::getSpecial(){
     quene_b.push(++client_number,2);
+    User *tmp = quene_b.findLastOne();
+    if(tmp!=nullptr)
+        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter), tmp->counter==-1?"---":"业务中");
     //todo加个calloc
     //quene_b.output();
 }
@@ -62,6 +69,9 @@ void TakeNumber::putItem(QString ID, QString ID_Counter, QString Status){
     QTableWidgetItem *item_0 = new QTableWidgetItem();
     QTableWidgetItem *item_1 = new QTableWidgetItem();
     QTableWidgetItem *item_2 = new QTableWidgetItem();
+    item_0->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    item_1->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
+    item_2->setTextAlignment(Qt::AlignHCenter|Qt::AlignVCenter);
     item_0->setText(ID);
     item_1->setText(ID_Counter);
     item_2->setText(Status);

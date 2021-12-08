@@ -17,6 +17,7 @@ SOURCES += \
     mainwindow.cpp \
     quene.cpp \
     register.cpp \
+    startservice.cpp \
     takenumber.cpp  \
     user.cpp \
     showresult.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     quene.h \
     quenemanager.h \
     register.h \
+    startservice.h \
     takenumber.h \
     user.h \
     showresult.h \
@@ -45,6 +47,7 @@ FORMS += \
     mainwindow.ui \
     register.ui \
     showresult.ui \
+    startservice.ui \
     storage.ui \
     takenumber.ui \
     windows.ui
