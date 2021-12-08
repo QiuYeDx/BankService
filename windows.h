@@ -6,6 +6,7 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QFile>
+#include "startservice.h"
 
 extern QString filepath ;
 
@@ -22,12 +23,13 @@ public slots:
 public:
     explicit Windows(QWidget *parent = nullptr);
     ~Windows();
-
+    void showService();
 private:
     Ui::Windows *ui;
     QPushButton *btn_switch;
     QLabel *label_1, *label_2, *label_3, *label_4;
     QComboBox *comboBox;
+    StartService *ui_service;
 };
 
 #endif // WINDOWS_H

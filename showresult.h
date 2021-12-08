@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QFile>
 #include <QDate>
+#include <QTextStream>
 
 extern QString filepath;
 

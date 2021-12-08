@@ -11,6 +11,10 @@ Windows::Windows(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("银行系统 · 窗口");
     this->setFixedSize(300, 300);
+    ui_service = new StartService();
+    ui_service->setWindowTitle("银行系统 · 业务");
+    ui_service->setFixedSize(300, 300);
+
 
     btn_switch = new QPushButton(this);
     btn_switch->setGeometry(90, 240, 120, 40);
@@ -55,6 +59,7 @@ Windows::~Windows()
 void Windows::Service(){
     if(btn_switch->text() == "开始业务"){
         //开始业务
+        showService();
         btn_switch->setText("结束业务");
         label_4->setText("业务办理中...");
         //待完善
@@ -88,4 +93,8 @@ void Windows::updateInformation(int index){
         btn_switch->setText("结束业务");
     else
         btn_switch->setText("开始业务");
+}
+
+void Windows::showService(){
+    ui_service->show();
 }
