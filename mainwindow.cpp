@@ -72,9 +72,9 @@ void MainWindow::logIn(){
 
     //如果成功登陆，则执行ui_mainMenu->show();显示主菜单窗口
     //并执行this->close();关闭登陆窗口。
-    if(username==USERNAME&&password==PASSWORD)
+    if(username==USERNAME&&password==PASSWORD&&username.length()!=0&&password.length()!=0)
     {
-        ui_mainMenu = new MainMenu();
+         ui_mainMenu = new MainMenu();
          ui_mainMenu->show();
          this->close();
     }else{
