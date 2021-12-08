@@ -18,7 +18,7 @@ Windows::Windows(QWidget *parent) :
 
     btn_switch = new QPushButton(this);
     btn_switch->setGeometry(90, 240, 120, 40);
-    btn_switch->setText("开始");
+    btn_switch->setText("开始业务");
 
     comboBox = new QComboBox(this);
     comboBox->setGeometry(40, 40, 220, 30);
