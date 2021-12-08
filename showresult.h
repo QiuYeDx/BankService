@@ -23,7 +23,7 @@ public:
 
 private:
     Ui::ShowResult *ui;
-    QLabel *label_1, *label_2, *Label_3, *label_4;
+    QLabel *label_1, *label_2, *Label_3, *label_4,*label;
 };
 
 #endif // SHOWRESULT_H
