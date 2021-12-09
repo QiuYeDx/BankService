@@ -67,18 +67,21 @@ void MainWindow::logIn(){
         spec_cnt=NUMBER2.toInt();
         counters.resize(norm_cnt+spec_cnt);
 
+        if(username==USERNAME&&password==PASSWORD&&username.length()!=0&&password.length()!=0)
+        {
+             ui_mainMenu = new MainMenu();
+             ui_mainMenu->show();
+             this->close();
+        }else{
+            QMessageBox::critical(0 , "登陆失败" , "请检查用户名和密码!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
+        }
+
+    }else{
+        QMessageBox::critical(0 , "登陆失败" , "请先注册!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
     }
     file.close();
 
     //如果成功登陆，则执行ui_mainMenu->show();显示主菜单窗口
     //并执行this->close();关闭登陆窗口。
-    if(username==USERNAME&&password==PASSWORD&&username.length()!=0&&password.length()!=0)
-    {
-         ui_mainMenu = new MainMenu();
-         ui_mainMenu->show();
-         this->close();
-    }else{
-        QMessageBox::critical(0 , "登陆失败" , "请检查用户名和密码!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
-    }
 
 }
