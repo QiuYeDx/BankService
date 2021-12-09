@@ -67,6 +67,7 @@ void TakeNumber::getNormal(){
 //特殊取号调用函数
 void TakeNumber::getSpecial(){
     quene_b.enQuene(++client_number,1);
+   // quene_b.output();
     User *tmp = quene_b.findLastOne();
     if(tmp!=nullptr&&tmp->counter==-1)
     {

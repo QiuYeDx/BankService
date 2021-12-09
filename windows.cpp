@@ -110,7 +110,7 @@ void Windows::Service(){
         counters[(label_2->text()).toInt()-1].allocated=false;
 
         //为新用户开个窗口
-        User *tmp = quene_a.getFirst();
+        User *tmp = quene_a.getFirstWaiting();
         if(tmp!=nullptr&&tmp->counter==-1)
         {
             if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
@@ -127,7 +127,7 @@ void Windows::Service(){
             }
         }
 
-        tmp = quene_b.getFirst();
+        tmp = quene_b.getFirstWaiting();
         if(tmp!=nullptr&&tmp->counter==-1)
         {
             if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)

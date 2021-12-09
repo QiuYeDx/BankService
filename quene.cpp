@@ -51,6 +51,7 @@ bool Quene::enQuene(int ID,int type)
         rear=temp;
     }else{
         rear->changeNext(temp);
+        rear=temp;
     }
     count++;
     return true;
@@ -72,19 +73,32 @@ User* Quene::deQuene()
     }
 }
 
-//void Quene::output()
-//{
-//    qDebug()<<"quene"<<endl;
-//    for(int i=front;i<rear;i++)
-//        qDebug()<<data[i]->ID<<"   "<<data[i]->type<<"  "<<data[i]->status<<endl;
+void Quene::output()
+{
+    qDebug()<<"quene:";
+    QNode* temp=front;
+    while(temp!=nullptr)
+    {
+        qDebug()<<temp->getUser()->ID<<"counter"<<temp->getUser()->counter<<endl;
+        temp=temp->getNext();
+    }
+}
 
-//}
-
-User* Quene::getFirst()
+User* Quene::getFront()
 {
     if(front==nullptr)
         return nullptr;
     return front->getUser();
+}
+
+User* Quene::getFirstWaiting()
+{
+    QNode* temp=front;
+    while(temp!=nullptr&&temp->getUser()->counter!=-1)
+        temp=temp->getNext();
+    if(temp==nullptr)
+        return nullptr;
+    return temp->getUser();
 }
 
 User* Quene::findLastOne()

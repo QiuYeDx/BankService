@@ -29,8 +29,9 @@ public:
     bool isEmpty() const;
     bool enQuene(int ID,int type);//讲用户指针传入,因此每个用户都需要new一下
     User* deQuene();
-    //void output();
-    User* getFirst();//寻找到ID最小的用户，并返回他的指针，未找到则返回空指针
+    void output();
+    User* getFront();//寻找到ID最小的用户，并返回他的指针，未找到则返回空指针
+    User* getFirstWaiting();
     User* findLastOne();
 };
 
