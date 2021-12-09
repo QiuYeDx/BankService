@@ -76,8 +76,8 @@ void Windows::Service(){
             counters[(label_2->text()).toInt()-1].user->status = 1;
             updateInformation((label_2->text()).toInt()-1);
             showService();
-            btn_switch->setText("结束业务");
-            label_4->setText("业务办理中...");
+           // btn_switch->setText("结束业务");
+            //label_4->setText("业务办理中...");
         }else
             QMessageBox::critical(0 , "业务警告" , "当前窗口无待处理业务", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
         //待完善
