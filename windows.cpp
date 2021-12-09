@@ -81,6 +81,8 @@ void Windows::Service(){
         }
         file.close();
         qDebug()<<"成功写文件"<<endl;
+        delete(counters[(label_2->text()).toInt()-1].user);
+        counters[(label_2->text()).toInt()-1].occupied=false;
 
         //为新用户开个窗口
         //待完善
