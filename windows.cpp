@@ -65,7 +65,7 @@ void Windows::Service(){
         //待完善
     }else{
         //结束业务
-        counters[(label_2->text()).toInt()].user->tm_end = QDateTime::currentDateTime();
+        counters[(label_2->text()).toInt()-1].user->tm_end = QDateTime::currentDateTime();
         //user内容存盘
         qDebug()<<"开始写文件"<<endl;
         QDate date=QDate::currentDate();
@@ -73,17 +73,19 @@ void Windows::Service(){
         if(file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append))
         {
             QTextStream in(&file);
-            in<<counters[(label_2->text()).toInt()].user->ID<<" "
-               <<counters[(label_2->text()).toInt()].user->type<<" "
-              <<counters[(label_2->text()).toInt()].user->tm_quene.toString("hhmmss")<<" "
-             <<counters[(label_2->text()).toInt()].user->tm_start.toString("hhmmss")<<" "
-            <<counters[(label_2->text()).toInt()].user->tm_end.toString("hhmmss")<<endl;
+            in<<counters[(label_2->text()).toInt()-1].user->ID<<" "
+               <<counters[(label_2->text()).toInt()-1].user->type<<" "
+              <<counters[(label_2->text()).toInt()-1].user->tm_quene.toString("hhmmss")<<" "
+             <<counters[(label_2->text()).toInt()-1].user->tm_start.toString("hhmmss")<<" "
+            <<counters[(label_2->text()).toInt()-1].user->tm_end.toString("hhmmss")<<endl;
         }
         file.close();
         qDebug()<<"成功写文件"<<endl;
 
         //为新用户开个窗口
         //待完善
+        btn_switch->setText("开始业务");
+        label_4->setText("空闲中");
     }
 }
 

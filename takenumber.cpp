@@ -45,23 +45,18 @@ TakeNumber::~TakeNumber()
 
 //一般取号调用函数
 void TakeNumber::getNormal(){
-   // qDebug()<<"一般取号";
     quene_a.push(++client_number,0);
     User *tmp = quene_a.findLastOne();
-   // qDebug()<<"找到一般队列最后一个"<<"ID"<<tmp->ID;
-    if(tmp!=nullptr)
+    if(tmp!=nullptr&&tmp->counter==-1)
     {
         tmp->counter = calloc(tmp->type);//这个分配的窗口是从零开始的，是在显示的函数传值的时候才加的1
-        //qDebug()<<tmp->counter;
         putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
         if(tmp->counter!=-1)
         {
             User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
-            //qDebug()<<"从一般队列中取出"<<"counter:"<<t->counter<<"ID:"<<t->ID;
             QDateTime tm_now=QDateTime::currentDateTime();
             t->tm_start=tm_now;
             counters[t->counter].user = t;
-           // qDebug()<<"放入窗口中";
         }
     }
     //quene_a.output();
@@ -71,7 +66,7 @@ void TakeNumber::getNormal(){
 void TakeNumber::getSpecial(){
     quene_b.push(++client_number,1);
     User *tmp = quene_b.findLastOne();
-    if(tmp!=nullptr)
+    if(tmp!=nullptr&&tmp->counter==-1)
     {
         tmp->counter = calloc(tmp->type);
         putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
