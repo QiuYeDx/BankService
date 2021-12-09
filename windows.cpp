@@ -68,6 +68,14 @@ void Windows::Service(){
     if(btn_switch->text() == "开始业务"){
         //开始业务
         if(counters[(label_2->text()).toInt()-1].user!=nullptr){
+            if( counters[(label_2->text()).toInt()-1].user->status == 0 && ui_takeNumber_ptr->getRowById(counters[(label_2->text()).toInt()-1].user->ID)!=-1){
+                ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(counters[(label_2->text()).toInt()-1].user->ID));
+                counters[(label_2->text()).toInt()-1].user->status = 1;
+                ui_takeNumber_ptr->putItem(QString::number(counters[(label_2->text()).toInt()-1].user->ID), counters[(label_2->text()).toInt()-1].user->counter==-1?"未分配":QString::number(counters[(label_2->text()).toInt()-1].user->counter+1), counters[(label_2->text()).toInt()-1].user->counter==-1?"排队中":(counters[(label_2->text()).toInt()-1].user->status==0?"请前往":"业务中"));
+
+            }
+            counters[(label_2->text()).toInt()-1].user->status = 1;
+
             showService();
             btn_switch->setText("结束业务");
             label_4->setText("业务办理中...");
@@ -96,6 +104,7 @@ void Windows::Service(){
         delete(counters[(label_2->text()).toInt()-1].user);
         counters[(label_2->text()).toInt()-1].user=nullptr;
         counters[(label_2->text()).toInt()-1].occupied=false;
+        counters[(label_2->text()).toInt()-1].allocated=false;
 
         //为新用户开个窗口
         User *tmp = quene_a.findMinimunID();
@@ -104,7 +113,7 @@ void Windows::Service(){
             if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
                 ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(tmp->ID));
             tmp->counter = calloc(tmp->type);//这个分配的窗口是从零开始的，是在显示的函数传值的时候才加的1
-            ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+            ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
             if(tmp->counter!=-1)
             {
                 User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
@@ -120,7 +129,8 @@ void Windows::Service(){
             if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
                 ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(tmp->ID));
             tmp->counter = calloc(tmp->type);
-            ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+            ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
+
             if(tmp->counter!=-1)
             {
                 User* t = quene_b.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
@@ -130,9 +140,6 @@ void Windows::Service(){
             }
         }
 
-
-
-        //待完善
         updateInformation(label_2->text().toInt()-1);
     }
 }

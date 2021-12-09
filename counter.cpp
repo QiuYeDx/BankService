@@ -1,6 +1,6 @@
 #include "counter.h"
 
-Counter::Counter():occupied(false), user(nullptr)
+Counter::Counter():occupied(false), allocated(false),user(nullptr)
 {
 
 }
@@ -19,9 +19,9 @@ int calloc(int type)
             {
                 for(int i = 0; i<norm_cnt+spec_cnt;i++)
                 {
-                    if(counters[i].occupied==false)
+                    if(counters[i].allocated==false)
                     {
-                        counters[i].occupied = true;
+                        counters[i].allocated = true;
                         return i;
                     }
                 }
@@ -32,9 +32,9 @@ int calloc(int type)
             {
                 for(int i = 0;i<norm_cnt;i++)
                 {
-                    if(counters[i].occupied == false)
+                    if(counters[i].allocated == false)
                     {
-                        counters[i].occupied = true;
+                        counters[i].allocated = true;
                         return i;
                     }
                 }
@@ -52,9 +52,9 @@ int calloc(int type)
         {
             for(int i = norm_cnt;i<spec_cnt+norm_cnt;i++)
             {
-                if(counters[i].occupied == false)
+                if(counters[i].allocated == false)
                 {
-                    counters[i].occupied = true;
+                    counters[i].allocated = true;
                     return i;
                 }
             }

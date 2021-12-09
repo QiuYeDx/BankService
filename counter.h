@@ -8,6 +8,7 @@ class Counter
 {
 public:
     bool occupied; //当前窗口是否被占用
+    bool allocated;//当前窗口是否已经被分配
     User* user;  //指向正在被服务的客户
     Counter();
 };

@@ -52,7 +52,7 @@ void TakeNumber::getNormal(){
         if(getRowById(tmp->ID)!=-1)
             popItem(getRowById(tmp->ID));
         tmp->counter = calloc(tmp->type);//这个分配的窗口是从零开始的，是在显示的函数传值的时候才加的1
-        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
         if(tmp->counter!=-1)
         {
             User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
@@ -73,7 +73,7 @@ void TakeNumber::getSpecial(){
         if(getRowById(tmp->ID)!=-1)
             popItem(getRowById(tmp->ID));
         tmp->counter = calloc(tmp->type);
-        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
         if(tmp->counter!=-1)
         {
             User* t = quene_b.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
