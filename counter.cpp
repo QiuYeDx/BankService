@@ -8,6 +8,7 @@ Counter::Counter():occupied(false), user(nullptr)
 
 int calloc(int type)
 {
+
     if(type == 0)  //普通
     {
         if(quene_a.isEmpty())
@@ -57,6 +58,7 @@ int calloc(int type)
                     return i;
                 }
             }
+            return -1;
         }
 
     }

@@ -2,7 +2,7 @@
 #include "ui_windows.h"
 #include "counter.h"
 
-using namespace Qt;
+//using namespace Qt;
 
 Windows::Windows(QWidget *parent) :
     QMainWindow(parent),

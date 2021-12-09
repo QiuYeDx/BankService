@@ -2,6 +2,7 @@
 #include "ui_takenumber.h"
 #include "quene.h"
 #include "user.h"
+#include "counter.h"
 
 extern Quene quene_a;
 extern Quene quene_b;
@@ -44,21 +45,37 @@ TakeNumber::~TakeNumber()
 
 //一般取号调用函数
 void TakeNumber::getNormal(){
-    quene_a.push(++client_number,1);
+    quene_a.push(++client_number,0);
     User *tmp = quene_a.findLastOne();
     if(tmp!=nullptr)
-        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter), tmp->counter==-1?"---":"业务中");
-    //todo加个calloc
+    {
+        tmp->counter = calloc(tmp->type);//这个分配的窗口是从零开始的，是在显示的函数传值的时候才加的1
+        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+        if(tmp->counter!=-1)
+        {
+            User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+            counters[t->counter].user = t;
+
+        }
+    }
     //quene_a.output();
 }
 
 //特殊取号调用函数
 void TakeNumber::getSpecial(){
-    quene_b.push(++client_number,2);
+    quene_b.push(++client_number,1);
     User *tmp = quene_b.findLastOne();
     if(tmp!=nullptr)
-        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter), tmp->counter==-1?"---":"业务中");
-    //todo加个calloc
+    {
+        tmp->counter = calloc(tmp->type);
+        putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+        if(tmp->counter!=-1)
+        {
+            User* t = quene_b.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+            counters[t->counter].user = t;
+
+        }
+    }
     //quene_b.output();
 }
 
