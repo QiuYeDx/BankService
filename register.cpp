@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QDir>
 
-//using namespace Qt;
+using namespace Qt;
 
 Register::Register(QWidget *parent) :
     QMainWindow(parent),

@@ -1,5 +1,5 @@
 #include "quene.h"
-//using namespace Qt;
+using namespace Qt;
 
 Quene::Quene(int len)
 {

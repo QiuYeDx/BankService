@@ -175,28 +175,42 @@ void ShowResult::updateInformation(int index){
        if(num_a==0)
        {
            label_5->setText("0");
-
            label_1->show();
-           label_3->show();
+           label_5->show();
            label_11->hide();
        }
-       else
+       else if(num_a!=0)
        {
-
+            label_5->setText(QString::number(num_a));
+            label_6->setText(QString::number(time_wait_a_ave));
+            label_7->setText(QString::number(time_serve_a_ave));
+            label_1->show();
+            label_2->show();
+            label_5->show();
+            label_6->show();
+            label_7->show();
+            label_11->hide();
        }
 
        if(num_b==0)
        {
            label_8->setText("0");
+           label_3->show();
+           label_8->show();
+           label_11->hide();
        }
-       else
+       else if(num_b!=0)
        {
-           label_8->setText("0");
+           label_8->setText(QString::number(num_b));
+           label_9->setText(QString::number(time_wait_b_ave));
+           label_10->setText(QString::number(time_serve_b_ave));
+           label_3->show();
+           label_4->show();
+           label_8->show();
+           label_9->show();
+           label_10->show();
+           label_11->hide();
        }
-
-
-
    }
-
 }
 

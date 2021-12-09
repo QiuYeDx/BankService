@@ -2,7 +2,7 @@
 #include "ui_windows.h"
 #include "counter.h"
 
-//using namespace Qt;
+using namespace Qt;
 
 Windows::Windows(QWidget *parent) :
     QMainWindow(parent),
@@ -67,6 +67,7 @@ void Windows::Service(){
         //结束业务
         counters[(label_2->text()).toInt()].user->tm_end = QDateTime::currentDateTime();
         //user内容存盘
+        qDebug()<<"开始写文件"<<endl;
         QDate date=QDate::currentDate();
         QFile file(filepath+"/result"+date.toString("yyyyMMdd")+".txt");
         if(file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append))
@@ -79,6 +80,7 @@ void Windows::Service(){
             <<counters[(label_2->text()).toInt()].user->tm_end.toString("hhmmss")<<endl;
         }
         file.close();
+        qDebug()<<"成功写文件"<<endl;
 
         //为新用户开个窗口
         //待完善
