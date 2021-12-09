@@ -91,7 +91,7 @@ void ShowResult::getResult(int index)
     num_b=0;
     int time_wait_a=0,time_wait_b=0,time_counter_a=0,time_counter_b=0;
     QFile file(filepath+"/result"+date_now.addDays(-1*index).toString("yyyyMMdd")+".txt");
-    qDebug()<<filepath+"/result"+date_now.addDays(-1*index).toString("yyyyMMdd")+".txt";
+   // qDebug()<<filepath+"/result"+date_now.addDays(-1*index).toString("yyyyMMdd")+".txt";
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in(&file);

@@ -73,6 +73,7 @@ void Windows::Service(){
                 counters[(label_2->text()).toInt()-1].user->status = 1;
                 ui_takeNumber_ptr->putItem(QString::number(counters[(label_2->text()).toInt()-1].user->ID), counters[(label_2->text()).toInt()-1].user->counter==-1?"未分配":QString::number(counters[(label_2->text()).toInt()-1].user->counter+1), counters[(label_2->text()).toInt()-1].user->counter==-1?"排队中":(counters[(label_2->text()).toInt()-1].user->status==0?"请前往":"业务中"));
             }
+            counters[(label_2->text()).toInt()-1].occupied = true;
             counters[(label_2->text()).toInt()-1].user->status = 1;
             updateInformation((label_2->text()).toInt()-1);
             showService();
