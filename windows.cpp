@@ -46,6 +46,14 @@ Windows::Windows(QWidget *parent) :
     label_4->setGeometry(140, 180, 120, 30);
     label_4->setText(counters[0].occupied?"业务办理中...":"空闲中...");
 
+    label_5 = new QLabel(this);
+    label_5->setGeometry(80, 150, 120, 30);
+    label_5->setText("ID:");
+
+    label_6 = new QLabel(this);
+    label_6->setGeometry(140, 150, 120, 30);
+    label_6->setText(counters[0].user==nullptr?"---":QString::number(counters[0].user->ID));
+
     QObject::connect(btn_switch, SIGNAL(clicked()), this, SLOT(Service()));
     QObject::connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateInformation(int)));
 }
@@ -84,14 +92,48 @@ void Windows::Service(){
         }
         file.close();
         qDebug()<<"成功写文件"<<endl;
+        ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(counters[(label_2->text()).toInt()-1].user->ID));
         delete(counters[(label_2->text()).toInt()-1].user);
         counters[(label_2->text()).toInt()-1].user=nullptr;
         counters[(label_2->text()).toInt()-1].occupied=false;
 
         //为新用户开个窗口
+        User *tmp = quene_a.findMinimunID();
+        if(tmp!=nullptr&&tmp->counter==-1)
+        {
+            if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
+                ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(tmp->ID));
+            tmp->counter = calloc(tmp->type);//这个分配的窗口是从零开始的，是在显示的函数传值的时候才加的1
+            ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+            if(tmp->counter!=-1)
+            {
+                User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+                QDateTime tm_now=QDateTime::currentDateTime();
+                t->tm_start=tm_now;
+                counters[t->counter].user = t;
+            }
+        }
+
+        tmp = quene_b.findMinimunID();
+        if(tmp!=nullptr&&tmp->counter==-1)
+        {
+            if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
+                ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(tmp->ID));
+            tmp->counter = calloc(tmp->type);
+            ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
+            if(tmp->counter!=-1)
+            {
+                User* t = quene_b.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+                QDateTime tm_now=QDateTime::currentDateTime();
+                t->tm_start=tm_now;
+                counters[t->counter].user = t;
+            }
+        }
+
+
+
         //待完善
-        btn_switch->setText("开始业务");
-        label_4->setText("空闲中");
+        updateInformation(label_2->text().toInt()-1);
     }
 }
 
@@ -99,6 +141,7 @@ void Windows::Service(){
 void Windows::updateInformation(int index){
     label_2->setText(QString::number(index+1));
     label_4->setText(counters[index].occupied?"业务办理中...":"空闲中...");
+    label_6->setText(counters[index].user==nullptr?"---":QString::number(counters[index].user->ID));
     if(counters[index].occupied)
         btn_switch->setText("结束业务");
     else
@@ -107,4 +150,8 @@ void Windows::updateInformation(int index){
 
 void Windows::showService(){
     ui_service->show();
+}
+
+void Windows::getTakeNumberPtr(TakeNumber *ptr){
+    this->ui_takeNumber_ptr = ptr;
 }

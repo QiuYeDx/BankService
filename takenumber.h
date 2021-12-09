@@ -22,6 +22,7 @@ public:
     void putItem(QString ID, QString ID_Counter, QString Status);   //添加一行数据
     void popItem(int row);  //删除指定行数据 [0], [1], [2]...
     void setItem(int row, QString Status);  //修改指定行的Status数据
+    int getRowById(int ID); //通过ID获取行号,未找到返回-1
 private:
     Ui::TakeNumber *ui;
     QPushButton *btn_normal, *btn_special;

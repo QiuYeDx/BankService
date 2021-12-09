@@ -12,6 +12,7 @@ MainMenu::MainMenu(QWidget *parent) :
     ui_windows = new Windows();
     ui_showResult = new ShowResult();
     ui_storage = new Storage();
+    ui_windows->getTakeNumberPtr(ui_takeNumber);
 
     btn_1 = new QPushButton(this);
     btn_1->setGeometry(60, 40, 180, 40);

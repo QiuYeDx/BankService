@@ -49,6 +49,8 @@ void TakeNumber::getNormal(){
     User *tmp = quene_a.findLastOne();
     if(tmp!=nullptr&&tmp->counter==-1)
     {
+        if(getRowById(tmp->ID)!=-1)
+            popItem(getRowById(tmp->ID));
         tmp->counter = calloc(tmp->type);//这个分配的窗口是从零开始的，是在显示的函数传值的时候才加的1
         putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
         if(tmp->counter!=-1)
@@ -68,6 +70,8 @@ void TakeNumber::getSpecial(){
     User *tmp = quene_b.findLastOne();
     if(tmp!=nullptr&&tmp->counter==-1)
     {
+        if(getRowById(tmp->ID)!=-1)
+            popItem(getRowById(tmp->ID));
         tmp->counter = calloc(tmp->type);
         putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"---":"业务中");
         if(tmp->counter!=-1)
@@ -100,7 +104,7 @@ void TakeNumber::putItem(QString ID, QString ID_Counter, QString Status){
     table->setItem(row_count, 2, item_2);
 }
 
-//删除指定行数据 [0], [1], [2]...
+//删除指定行的数据 [0], [1], [2]...
 void TakeNumber::popItem(int row){
     table->removeRow(row);
 }
@@ -110,4 +114,13 @@ void TakeNumber::setItem(int row, QString Status){
     QTableWidgetItem *item = new QTableWidgetItem();
     item->setText(Status);
     table->setItem(row, 2, item);
+}
+
+//通过ID获取行号,未找到返回-1
+int TakeNumber::getRowById(int ID){
+    for(int i=0;i<table->rowCount();i++){
+        if(table->item(i, 0)->text().toInt() == ID)
+            return i;
+    }
+    return -1;
 }
