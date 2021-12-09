@@ -72,10 +72,9 @@ void Windows::Service(){
                 ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(counters[(label_2->text()).toInt()-1].user->ID));
                 counters[(label_2->text()).toInt()-1].user->status = 1;
                 ui_takeNumber_ptr->putItem(QString::number(counters[(label_2->text()).toInt()-1].user->ID), counters[(label_2->text()).toInt()-1].user->counter==-1?"未分配":QString::number(counters[(label_2->text()).toInt()-1].user->counter+1), counters[(label_2->text()).toInt()-1].user->counter==-1?"排队中":(counters[(label_2->text()).toInt()-1].user->status==0?"请前往":"业务中"));
-
             }
             counters[(label_2->text()).toInt()-1].user->status = 1;
-
+            updateInformation((label_2->text()).toInt()-1);
             showService();
             btn_switch->setText("结束业务");
             label_4->setText("业务办理中...");
