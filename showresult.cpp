@@ -11,34 +11,34 @@ ShowResult::ShowResult(QWidget *parent) :
     this->setFixedSize(300, 300);
 
     comboBox = new QComboBox(this);
-    comboBox->setGeometry(40, 40, 220, 30);
+    comboBox->setGeometry(50, 40,200, 30);
     comboBox->clear(); //清除列表
 
-    comboBox->addItem("--请选择日期--");
+    comboBox->addItem("-------请选择日期-------");
     date_now=QDate::currentDate();
     for(int i=0;i>=-14;i--)
     {
-        QString date = date_now.addDays(i).toString("yyyy年MM月dd日");
+        QString date = date_now.addDays(i).toString("      yyyy年MM月dd日");
         comboBox->addItem(date);
     }
 
     label_1 = new QLabel(this);
-    label_1->setGeometry(60, 90, 120, 30);
+    label_1->setGeometry(60, 90, 120, 35);
     label_1->setText("一般业务\n      客户数量：");
     label_1->hide();
 
     label_2 = new QLabel(this);
-    label_2->setGeometry(80, 130, 120, 30);
+    label_2->setGeometry(80, 130, 120, 35);
     label_2->setText("平均等待时间：\n平均业务时间：");
     label_2->hide();
 
     label_3 = new QLabel(this);
-    label_3->setGeometry(60, 180, 120, 30);
+    label_3->setGeometry(60, 180, 120, 35);
     label_3->setText("特殊业务\n      客户数量：");
     label_3->hide();
 
     label_4 = new QLabel(this);
-    label_4->setGeometry(80, 220, 120, 30);
+    label_4->setGeometry(80, 220, 120, 35);
     label_4->setText("平均等待时间：\n平均业务时间：");
     label_4->hide();
 
