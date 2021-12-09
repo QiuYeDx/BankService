@@ -59,9 +59,12 @@ Windows::~Windows()
 void Windows::Service(){
     if(btn_switch->text() == "开始业务"){
         //开始业务
-        showService();
-        btn_switch->setText("结束业务");
-        label_4->setText("业务办理中...");
+        if(counters[(label_2->text()).toInt()-1].user!=nullptr){
+            showService();
+            btn_switch->setText("结束业务");
+            label_4->setText("业务办理中...");
+        }else
+            QMessageBox::critical(0 , "业务警告" , "当前窗口无待处理业务", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
         //待完善
     }else{
         //结束业务
@@ -82,6 +85,7 @@ void Windows::Service(){
         file.close();
         qDebug()<<"成功写文件"<<endl;
         delete(counters[(label_2->text()).toInt()-1].user);
+        counters[(label_2->text()).toInt()-1].user=nullptr;
         counters[(label_2->text()).toInt()-1].occupied=false;
 
         //为新用户开个窗口
