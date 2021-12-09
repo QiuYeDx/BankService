@@ -101,12 +101,13 @@ void ShowResult::getResult(int index)
             result=in.readLine();
             QStringList list = result.split(" ");
             QString type = list[1];
-            QString tm_quene = list[2];
-            QString tm_start= list[3];
-            QString tm_end = list[4];
+            int tm_quene = (list[2].toInt()/10000)*3600 + ((list[2].toInt()/100)%100)*60 +list[2].toInt()%100;
+            int tm_start= (list[3].toInt()/10000)*3600 + ((list[3].toInt()/100)%100)*60 +list[3].toInt()%100;
+            int tm_end = (list[4].toInt()/10000)*3600 + ((list[4].toInt()/100)%100)*60 +list[4].toInt()%100;
 
-            int tm_wait=(tm_start.toInt()/10000-tm_quene.toInt()/10000)*60+((tm_start.toInt()%10000-tm_quene.toInt()%10000))/100;
-            int tm_serve=(tm_end.toInt()/10000-tm_start.toInt()/10000)*60+((tm_end.toInt()%10000-tm_start.toInt()%10000))/100;
+
+            int tm_wait=tm_start-tm_quene;
+            int tm_serve=tm_end-tm_start;
 
            if(type.toInt()==0)
            {
@@ -123,44 +124,38 @@ void ShowResult::getResult(int index)
         }
         if(num_a!=0)
         {
-            float temp=time_wait_a/(num_a)*1.0;
-            int ss=(int)(temp*100)%100;
-            int mm=(int)temp%100;
-            int hh=(int)(temp/100);
+            int temp=time_wait_a/(num_a)*1.0;
+            int hh=temp/3600;
+            temp%=3600;
+            int mm=temp/60;
+            temp%=60;
+            int ss=temp;
             time_wait_a_ave.setHMS(hh,mm,ss);
             temp=time_counter_a/(num_a)*1.0;
-            ss=(int)(temp*100)%100;
-            mm=(int)temp%100;
-            hh=(int)(temp/100);
+            hh=temp/3600;
+            temp%=3600;
+            mm=temp/60;
+            temp%=60;
+            ss=temp;
             time_serve_a_ave.setHMS(hh,mm,ss);
         }
         if(num_b!=0)
         {
-            float temp=time_wait_b/(num_b)*1.0;
-            int ss=(int)(temp*100)%100;
-            int mm=(int)temp%100;
-            int hh=(int)(temp/100);
+            int temp=time_wait_b/(num_b)*1.0;
+            int hh=temp/3600;
+            temp%=3600;
+            int mm=temp/60;
+            temp%=60;
+            int ss=temp;
             time_wait_b_ave.setHMS(hh,mm,ss);
             temp=time_counter_b/(num_b)*1.0;
-            ss=(int)(temp*100)%100;
-            mm=(int)temp%100;
-            hh=(int)(temp/100);
+            hh=temp/3600;
+            temp%=3600;
+            mm=temp/60;
+            temp%=60;
+            ss=temp;
             time_serve_b_ave.setHMS(hh,mm,ss);
         }
-       // qDebug()<<time_wait_ave<<" "<<time_serve_a_ave<<" "<<time_serve_b_ave<<Qt::endl;
-            //对字符串的处理
-
-//        QString showres="";
-//        if(num_a!=0)
-//            showres+="一般业务顾客："+QString::number(num_a)+"\n排队时间"+QString::number(time_wait_a_ave)+"\n业务时间"+QString::number(time_serve_a_ave);
-//        if(num_b!=0)
-//            showres+="teshu业务顾客："+QString::number(num_a)+"\n排队时间"+QString::number(time_wait_b_ave)+"\n业务时间"+QString::number(time_serve_b_ave);
-
-//        //用于临时输出
-//        label = new QLabel(this);
-//        label->setGeometry(30, 30, 120, 120);
-//        label->setText(showres);
-
     }
     else{
         num_a=0;
