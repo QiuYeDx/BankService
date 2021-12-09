@@ -45,7 +45,7 @@ TakeNumber::~TakeNumber()
 
 //一般取号调用函数
 void TakeNumber::getNormal(){
-    quene_a.push(++client_number,0);
+    quene_a.enQuene(++client_number,0);
     User *tmp = quene_a.findLastOne();
     if(tmp!=nullptr&&tmp->counter==-1)
     {
@@ -55,7 +55,7 @@ void TakeNumber::getNormal(){
         putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
         if(tmp->counter!=-1)
         {
-            User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+            User* t = quene_a.deQuene();//刚进去就被分配窗口的那个user理论上前面不会有人
             QDateTime tm_now=QDateTime::currentDateTime();
             t->tm_start=tm_now;
             counters[t->counter].user = t;
@@ -66,7 +66,7 @@ void TakeNumber::getNormal(){
 
 //特殊取号调用函数
 void TakeNumber::getSpecial(){
-    quene_b.push(++client_number,1);
+    quene_b.enQuene(++client_number,1);
     User *tmp = quene_b.findLastOne();
     if(tmp!=nullptr&&tmp->counter==-1)
     {
@@ -76,7 +76,7 @@ void TakeNumber::getSpecial(){
         putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
         if(tmp->counter!=-1)
         {
-            User* t = quene_b.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+            User* t = quene_b.deQuene();//刚进去就被分配窗口的那个user理论上前面不会有人
             QDateTime tm_now=QDateTime::currentDateTime();
             t->tm_start=tm_now;
             counters[t->counter].user = t;

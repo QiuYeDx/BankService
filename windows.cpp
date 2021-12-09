@@ -110,7 +110,7 @@ void Windows::Service(){
         counters[(label_2->text()).toInt()-1].allocated=false;
 
         //为新用户开个窗口
-        User *tmp = quene_a.findMinimunID();
+        User *tmp = quene_a.getFirst();
         if(tmp!=nullptr&&tmp->counter==-1)
         {
             if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
@@ -119,14 +119,15 @@ void Windows::Service(){
             ui_takeNumber_ptr->putItem(QString::number(tmp->ID), tmp->counter==-1?"未分配":QString::number(tmp->counter+1), tmp->counter==-1?"排队中":(tmp->status==0?"请前往":"业务中"));
             if(tmp->counter!=-1)
             {
-                User* t = quene_a.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+                User* t = quene_a.deQuene();//刚进去就被分配窗口的那个user理论上前面不会有人
                 QDateTime tm_now=QDateTime::currentDateTime();
                 t->tm_start=tm_now;
+
                 counters[t->counter].user = t;
             }
         }
 
-        tmp = quene_b.findMinimunID();
+        tmp = quene_b.getFirst();
         if(tmp!=nullptr&&tmp->counter==-1)
         {
             if(ui_takeNumber_ptr->getRowById(tmp->ID)!=-1)
@@ -136,7 +137,7 @@ void Windows::Service(){
 
             if(tmp->counter!=-1)
             {
-                User* t = quene_b.pop();//刚进去就被分配窗口的那个user理论上前面不会有人
+                User* t = quene_b.deQuene();//刚进去就被分配窗口的那个user理论上前面不会有人
                 QDateTime tm_now=QDateTime::currentDateTime();
                 t->tm_start=tm_now;
                 counters[t->counter].user = t;

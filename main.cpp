@@ -4,9 +4,9 @@
 
 #include"quene.h"
 #include "counter.h"
-#define QUENELENGTH 30
-Quene quene_a(QUENELENGTH);
-Quene quene_b(QUENELENGTH);
+
+Quene quene_a;
+Quene quene_b;
 int client_number=0;
 std::vector<Counter> counters(5);
 QString filepath = QDir::currentPath();

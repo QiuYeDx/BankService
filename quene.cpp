@@ -1,12 +1,37 @@
 #include "quene.h"
 using namespace Qt;
 
-Quene::Quene(int len)
+QNode::QNode(int ID,int type)
 {
-    this->length=len;
-    data=new User*[this->length];
-    front=0;
-    rear=0;
+    data=new User(ID,type);
+    next=nullptr;
+}
+
+QNode::QNode(QNode& origin):
+    data(origin.data),
+    next(origin.next)
+{}
+
+QNode* QNode::getNext()
+{
+    return this->next;
+}
+
+bool QNode::changeNext(QNode* in)
+{
+    this->next=in;
+    return true;
+}
+
+User* QNode::getUser()
+{
+    return this->data;
+}
+
+Quene::Quene()
+{
+    front = nullptr;
+    rear = nullptr;
     count=0;
 }
 
@@ -17,60 +42,56 @@ bool Quene::isEmpty() const
     else return false;
 }
 
-bool Quene::push(int ID,int type)
+bool Quene::enQuene(int ID,int type)
 {
-    if(count<length)
+    QNode*temp = new QNode(ID,type);
+    if(front==nullptr)
     {
-        data[rear]=new User(ID,type);
-        rear++;
-        count++;
-        return true;
+        front=temp;
+        rear=temp;
+    }else{
+        rear->changeNext(temp);
     }
-    else return false;
+    count++;
+    return true;
 }
 
-User* Quene::pop()
+User* Quene::deQuene()
 {
     if(count==0)
         return nullptr;
     else
     {
-       // data[front]->tm_start=QDateTime::currentDateTime();
-        User* temp=new User(*data[front]);
-        for(int i=0;i<rear-1;i++)
-        {
-            data[i]=data[i+1];
-        }
-        rear--;
         count--;
-        return temp;
+        QNode* temp=front;
+        if(front->getNext()==nullptr)
+            rear=nullptr;
+        front=front->getNext();
+        temp->changeNext(nullptr);
+        return temp->getUser();
     }
 }
 
-void Quene::output()
-{
-    qDebug()<<"quene"<<endl;
-    for(int i=front;i<rear;i++)
-        qDebug()<<data[i]->ID<<"   "<<data[i]->type<<"  "<<data[i]->status<<endl;
+//void Quene::output()
+//{
+//    qDebug()<<"quene"<<endl;
+//    for(int i=front;i<rear;i++)
+//        qDebug()<<data[i]->ID<<"   "<<data[i]->type<<"  "<<data[i]->status<<endl;
 
-}
+//}
 
-User* Quene::findMinimunID()
+User* Quene::getFirst()
 {
-    int i=0;
-    while(i<rear)
-    {
-        if(data[i]->counter==-1)
-            return data[i];
-    }
-    return nullptr;
+    if(front==nullptr)
+        return nullptr;
+    return front->getUser();
 }
 
 User* Quene::findLastOne()
 {
-    if(count==0)
+    if(rear==nullptr)
         return nullptr;
-    else return data[rear-1];
+    return rear->getUser();
 }
 
 

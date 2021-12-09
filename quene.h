@@ -4,21 +4,33 @@
 #include "user.h"
 #include"QDebug"
 /*取号等待队列*/
+class QNode
+{
+private:
+    User* data;
+    QNode* next;
+public:
+    QNode(int ID,int type);
+    QNode(QNode& origin);
+    QNode* getNext();
+    bool changeNext(QNode* in);
+    User* getUser();
+
+};
 
 class Quene
 {
 private:
+    QNode* front;
+    QNode* rear;
     int count;
-    int front,rear;
-    User** data;//存储每一个等待客户的指针
-    int length;
 public:
-    Quene(int len);
+    Quene();
     bool isEmpty() const;
-    bool push(int ID,int type);//讲用户指针传入,因此每个用户都需要new一下
-    User* pop();
-    void output();
-    User* findMinimunID();//寻找到ID最小的用户，并返回他的指针，未找到则返回空指针
+    bool enQuene(int ID,int type);//讲用户指针传入,因此每个用户都需要new一下
+    User* deQuene();
+    //void output();
+    User* getFirst();//寻找到ID最小的用户，并返回他的指针，未找到则返回空指针
     User* findLastOne();
 };
 
