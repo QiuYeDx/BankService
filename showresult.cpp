@@ -9,6 +9,75 @@ ShowResult::ShowResult(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("银行系统 · 统计");
     this->setFixedSize(300, 300);
+
+    comboBox = new QComboBox(this);
+    comboBox->setGeometry(40, 40, 220, 30);
+    comboBox->clear(); //清除列表
+
+    comboBox->addItem("--请选择日期--");
+    date_now=QDate::currentDate();
+    for(int i=0;i>=-14;i--)
+    {
+        QString date = date_now.addDays(i).toString("yyyy年MM月dd日");
+        comboBox->addItem(date);
+    }
+
+    label_1 = new QLabel(this);
+    label_1->setGeometry(60, 90, 120, 30);
+    label_1->setText("一般业务\n      客户数量：");
+    label_1->hide();
+
+    label_2 = new QLabel(this);
+    label_2->setGeometry(80, 130, 120, 30);
+    label_2->setText("平均等待时间：\n平均业务时间：");
+    label_2->hide();
+
+    label_3 = new QLabel(this);
+    label_3->setGeometry(60, 180, 120, 30);
+    label_3->setText("特殊业务\n      客户数量：");
+    label_3->hide();
+
+    label_4 = new QLabel(this);
+    label_4->setGeometry(80, 220, 120, 30);
+    label_4->setText("平均等待时间：\n平均业务时间：");
+    label_4->hide();
+
+    label_5 = new QLabel(this);//一般客户数量
+    label_5->setGeometry(145, 110, 120, 30);
+    label_5->setText("0");
+    label_5->hide();
+
+    label_6 = new QLabel(this);
+    label_6->setGeometry(170, 130, 120, 30);
+    label_6->setText("0");
+    label_6->hide();
+
+    label_7 = new QLabel(this);
+    label_7->setGeometry(170, 150, 120, 30);
+    label_7->setText("0");
+    label_7->hide();
+
+    label_8 = new QLabel(this);//特殊客户数量
+    label_8->setGeometry(145, 200, 120, 30);
+    label_8->setText("0");
+    label_8->hide();
+
+    label_9 = new QLabel(this);
+    label_9->setGeometry(170, 220, 120, 30);
+    label_9->setText("0");
+    label_9->hide();
+
+    label_10 = new QLabel(this);
+    label_10->setGeometry(170, 240, 120, 30);
+    label_10->setText("0");
+    label_10->hide();
+
+    label_11 = new QLabel(this);
+    label_11->setGeometry(110, 150, 120, 30);
+    label_11->setText("无当日数据！");
+    label_11->hide();
+
+    QObject::connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(updateInformation(int)));
 }
 
 ShowResult::~ShowResult()
@@ -16,12 +85,12 @@ ShowResult::~ShowResult()
     delete ui;
 }
 
-void ShowResult::getResult()
+void ShowResult::getResult(int index)
 {
-    int num_a=0,num_b=0;
+    num_a=0;
+    num_b=0;
     int time_wait_a=0,time_wait_b=0,time_counter_a=0,time_counter_b=0;
-    QDate date=QDate::currentDate();
-    QFile file(filepath+"/result"+date.toString("yyyymmdd")+".txt");
+    QFile file(filepath+"/result"+date_now.addDays(-1*index).toString("yyyyMMdd")+".txt");
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in(&file);
@@ -48,17 +117,10 @@ void ShowResult::getResult()
                time_wait_b+=tm_wait;
                time_counter_b+=tm_serve;
            }
-
         }
-        float time_wait_a_ave;
-        float time_wait_b_ave;
-        float time_serve_a_ave;
-        float time_serve_b_ave;
-
-
         if(num_a!=0)
         {
-             time_wait_a_ave=time_wait_a/(num_a)*1.0;
+           time_wait_a_ave=time_wait_a/(num_a)*1.0;
            time_serve_a_ave=time_counter_a/num_a*1.0;
         }
         if(num_b!=0)
@@ -81,5 +143,60 @@ void ShowResult::getResult()
         label->setText(showres);
 
     }
+    else{
+        num_a=0;
+        num_b=0;
+        time_wait_a_ave=0;
+        time_wait_b_ave=0;
+        time_serve_a_ave=0;
+        time_serve_b_ave=0;
+    }
     file.close();
 }
+
+//更新信息
+void ShowResult::updateInformation(int index){
+   getResult(index-1);
+   if(index==0)
+   {
+        label_1->hide();
+        label_2->hide();
+        label_3->hide();
+        label_4->hide();
+        label_5->hide();
+        label_6->hide();
+        label_7->hide();
+        label_8->hide();
+        label_9->hide();
+        label_10->hide();
+        label_11->show();
+   }else
+   {
+       if(num_a==0)
+       {
+           label_5->setText("0");
+
+           label_1->show();
+           label_3->show();
+           label_11->hide();
+       }
+       else
+       {
+
+       }
+
+       if(num_b==0)
+       {
+           label_8->setText("0");
+       }
+       else
+       {
+           label_8->setText("0");
+       }
+
+
+
+   }
+
+}
+
