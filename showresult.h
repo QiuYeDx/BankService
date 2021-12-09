@@ -7,6 +7,7 @@
 #include <QDate>
 #include <QTextStream>
 #include <QComboBox>
+#include <QTime>
 
 extern QString filepath;
 
@@ -23,6 +24,7 @@ public:
     explicit ShowResult(QWidget *parent = nullptr);
     ~ShowResult();
     void getResult(int index);
+   // QTime calculateTimeGap(QTime a,QTime b);
 
 private:
     Ui::ShowResult *ui;
@@ -31,10 +33,10 @@ private:
     *label_8,*label_9,*label_10,*label_11,*label_12,*label_13,*label_14,*label_15;
     QComboBox *comboBox;
     QDate date_now;
-    float time_wait_a_ave;
-    float time_wait_b_ave;
-    float time_serve_a_ave;
-    float time_serve_b_ave;
+    QTime time_wait_a_ave;
+    QTime time_wait_b_ave;
+    QTime time_serve_a_ave;
+    QTime time_serve_b_ave;
     int  num_a,num_b;
 
 };

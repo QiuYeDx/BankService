@@ -87,6 +87,7 @@ void Windows::Service(){
         counters[(label_2->text()).toInt()-1].user->tm_end = QDateTime::currentDateTime();
         //user内容存盘
         qDebug()<<"开始写文件"<<endl;
+
         QDate date=QDate::currentDate();
         QFile file(filepath+"/result"+date.toString("yyyyMMdd")+".txt");
         if(file.open(QIODevice::WriteOnly|QIODevice::Text|QIODevice::Append))
