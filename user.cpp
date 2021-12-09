@@ -16,5 +16,6 @@ User::User(User& origin):
     status(origin.status),
     tm_quene(origin.tm_quene),
     tm_start(origin.tm_start),
-    tm_end(origin.tm_end)
+    tm_end(origin.tm_end),
+    counter(origin.counter)
 {}

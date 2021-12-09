@@ -43,32 +43,32 @@ ShowResult::ShowResult(QWidget *parent) :
     label_4->hide();
 
     label_5 = new QLabel(this);//一般客户数量
-    label_5->setGeometry(145, 110, 120, 30);
+    label_5->setGeometry(145, 100, 120, 30);
     label_5->setText("0");
     label_5->hide();
 
     label_6 = new QLabel(this);
-    label_6->setGeometry(170, 130, 120, 30);
+    label_6->setGeometry(170, 120, 120, 30);
     label_6->setText("0");
     label_6->hide();
 
     label_7 = new QLabel(this);
-    label_7->setGeometry(170, 150, 120, 30);
+    label_7->setGeometry(170, 140, 120, 30);
     label_7->setText("0");
     label_7->hide();
 
     label_8 = new QLabel(this);//特殊客户数量
-    label_8->setGeometry(145, 200, 120, 30);
+    label_8->setGeometry(145, 190, 120, 30);
     label_8->setText("0");
     label_8->hide();
 
     label_9 = new QLabel(this);
-    label_9->setGeometry(170, 220, 120, 30);
+    label_9->setGeometry(170, 210, 120, 30);
     label_9->setText("0");
     label_9->hide();
 
     label_10 = new QLabel(this);
-    label_10->setGeometry(170, 240, 120, 30);
+    label_10->setGeometry(170, 230, 120, 30);
     label_10->setText("0");
     label_10->hide();
 
@@ -91,6 +91,7 @@ void ShowResult::getResult(int index)
     num_b=0;
     int time_wait_a=0,time_wait_b=0,time_counter_a=0,time_counter_b=0;
     QFile file(filepath+"/result"+date_now.addDays(-1*index).toString("yyyyMMdd")+".txt");
+    qDebug()<<filepath+"/result"+date_now.addDays(-1*index).toString("yyyyMMdd")+".txt";
     if(file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream in(&file);
@@ -157,7 +158,7 @@ void ShowResult::getResult(int index)
 //更新信息
 void ShowResult::updateInformation(int index){
    getResult(index-1);
-   if(index==0)
+   if(num_a==0&&num_b==0)
    {
         label_1->hide();
         label_2->hide();
@@ -169,7 +170,10 @@ void ShowResult::updateInformation(int index){
         label_8->hide();
         label_9->hide();
         label_10->hide();
-        label_11->show();
+        if(index==0)
+            label_11->hide();
+        else
+            label_11->show();
    }else
    {
        if(num_a==0)

@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QTableWidget>
 #include <QHeaderView>
+#include <QDateTime>
 namespace Ui {
 class TakeNumber;
 }
