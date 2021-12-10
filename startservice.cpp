@@ -56,7 +56,7 @@ StartService::StartService(int ID):
 
 
     label_info = new QLabel(this);
-    label_info->setGeometry(140, 60, 120, 30);
+    label_info->setGeometry(80, 40, 120, 900);
     label_info->setText("信息显示！！");
     label_info->hide();
 
@@ -181,6 +181,7 @@ void StartService::login()
     {
         ab.addAccount(password, username);
         label_info->setText("注册成功");
+        setType(0);
     }
 }
 
