@@ -21,11 +21,11 @@ StartService::StartService(int ID):
     //this->setAttribute(Qt::WA_DeleteOnClose, true);
 
     label_1 = new QLabel(this);
-    label_1->setGeometry(80, 20, 120, 30);
+    label_1->setGeometry(120, 25, 120, 30);
     label_1->setText("窗口号:");
 
     label_2 = new QLabel(this);
-    label_2->setGeometry(140, 20, 120, 30);
+    label_2->setGeometry(180, 25, 120, 30);
     label_2->setText(QString::number(ID));
 
     btn_1 = new QRadioButton(this);
@@ -48,6 +48,10 @@ StartService::StartService(int ID):
     group_1 = new QGroupBox(this);
     group_1->setGeometry(10, 125, 75, 90);
     group_1->setLayout(layout_1);
+
+    group_2 = new QGroupBox(this);
+    group_2->setGeometry(40,25,220,80);
+
 
     label_info = new QLabel(this);
     label_info->setGeometry(35, 50, 120, 30);
@@ -76,18 +80,26 @@ StartService::StartService(int ID):
     line_money->setGeometry(135, 225, 60, 30);
     line_money->setEchoMode(QLineEdit::Password);
 
-
     btn_4 = new QPushButton(this);
-    btn_4->setGeometry(260, 170, 40, 40);
+    btn_4->setGeometry(257, 170, 35, 40);
     btn_4->setText("√");
 
+    QObject::connect(btn_1,SIGNAL(toggled(bool)),this,SLOT(chooseServiceType()));
+    QObject::connect(btn_2,SIGNAL(toggled(bool)),this,SLOT(chooseServiceType()));
+    QObject::connect(btn_3,SIGNAL(toggled(bool)),this,SLOT(chooseServiceType()));
+    QObject::connect(btn_4,SIGNAL(clicked()),this,SLOT(login()));
+}
 
-
-//    layout_2 = new QVBoxLayout(this);
-//    layout_2->addWidget(label_user);
-//    layout_2->addWidget(label_pwd);
-//    layout_2->addWidget(line_user);
-//    layout_2->addWidget(line_pwd);
-
+void StartService::chooseServiceType()
+{
 
 }
+
+void StartService::login()
+{
+    QString username = label_user->text();
+    QString password = label_pwd->text();
+
+}
+
+
