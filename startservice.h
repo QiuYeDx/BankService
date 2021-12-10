@@ -24,6 +24,7 @@ public:
     StartService(int ID);
     explicit StartService(QWidget *parent = nullptr);
     ~StartService();
+    void setType(int index);
 
 public slots:
     void login();
@@ -31,6 +32,7 @@ public slots:
 
 private:
     Ui::StartService *ui;
+    int type;//type为1表示特殊业务，即开户，为0表示一般业务，即存取款
     int ID;
     QLabel *label_1, *label_2;
     QLabel *label_info ,*label_user,*label_pwd,*label_money;

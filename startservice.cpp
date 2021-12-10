@@ -109,6 +109,18 @@ void StartService::chooseServiceType()
 
 }
 
+void StartService::setType(int index)
+{
+    type=index;
+    qDebug()<<index;
+    if(type==1)
+    {
+        group_1->hide();
+    }else{
+        group_1->show();
+    }
+}
+
 void StartService::login()
 {
     QString username = line_user->text();

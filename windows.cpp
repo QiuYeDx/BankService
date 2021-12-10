@@ -77,6 +77,7 @@ void Windows::Service(){
             counters[(label_2->text()).toInt()-1].user->status = 1;
             updateInformation((label_2->text()).toInt()-1);
             ui_service = new StartService(label_2->text().toInt());
+            ui_service->setType(counters[(label_2->text()).toInt()-1].user->type);
             ui_service->show();
             //showService();
             //btn_switch->setText("结束业务");
@@ -160,6 +161,8 @@ void Windows::updateInformation(int index){
 }
 
 void Windows::showService(){
+    ui_service->setType(counters[(label_2->text()).toInt()-1].user->type);
+    qDebug()<<counters[(label_2->text()).toInt()-1].user->type;
     ui_service->show();
 }
 
