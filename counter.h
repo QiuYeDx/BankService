@@ -14,7 +14,6 @@ public:
 };
 
 
-//todo 实现分配，传特殊还是普通业务
 extern std::vector<Counter> counters;
 extern Quene quene_a;
 extern Quene quene_b;

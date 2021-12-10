@@ -127,13 +127,42 @@ void StartService::login()
     QString password = line_pwd->text();
 //    qDebug() << username << Qt::endl;
 //    qDebug() << password << Qt::endl;
-    if(ab.entry[username].password == password)
+    if(type == 0)
     {
+        if(ab.entry[username].password == password)
+        {
+            if(btn_1->isChecked()) //查询
+            {
+                QString t="";
+                int k = ab.entry[username].container.size();
+                for(int i = 0;i<k;i++)
+                {
+                    t += ("时间 "+ab.entry[username].container[i].time.toString() + "金额 " +QString::number(ab.entry[username].container[i].amount)  + "类型 "+(type==1?"存":"取")+"\n");
+                }
+                label_info->setText("余额"+QString::number(ab.entry[username].Balance)+ "\n近三次交易记录:" + "\n" + t);
+            }
+            else if(btn_2->isChecked()) //存款
+            {
+                float t = line_money->text().toFloat();
+                ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,1);
+
+            }
+            else //取款
+            {
+                float t = line_money->text().toFloat();
+                ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,-1);
+            }
+        }
+        else
+        {
+            QMessageBox::critical(0 , "密码错误" , "请检查账户和密码!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
+        }
 
     }
     else
     {
-        QMessageBox::critical(0 , "密码错误" , "请检查账户和密码!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
+        ab.addAccount(password, username);
+        label_info->setText("注册成功");
     }
 }
 
