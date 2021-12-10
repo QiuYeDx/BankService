@@ -10,6 +10,9 @@ public:
     QDateTime time;
     float amount;
     int type;
+    Transaction();
+    Transaction(QDateTime, float, int);
+
 };
 
 #endif // TRANSACTION_H
