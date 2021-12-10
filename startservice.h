@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QLineEdit>
 namespace Ui {
 class StartService;
 }
@@ -19,6 +20,7 @@ private:
     Ui::StartService *ui;
     int ID;
     QLabel *label_1, *label_2;
+    QLineEdit *line_1;
 };
 
 #endif // STARTSERVICE_H
