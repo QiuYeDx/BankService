@@ -111,9 +111,18 @@ void StartService::chooseServiceType()
 
 void StartService::login()
 {
-    QString username = label_user->text();
-    QString password = label_pwd->text();
+    QString username = line_user->text();
+    QString password = line_pwd->text();
+//    qDebug() << username << Qt::endl;
+//    qDebug() << password << Qt::endl;
+    if(ab.entry[username].password == password)
+    {
 
+    }
+    else
+    {
+        QMessageBox::critical(0 , "密码错误" , "请检查账户和密码!", QMessageBox::Ok | QMessageBox::Default , QMessageBox::Cancel | QMessageBox::Escape , 0);
+    }
 }
 
 

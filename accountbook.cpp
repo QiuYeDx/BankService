@@ -81,3 +81,11 @@ Account* AccountBook::query(QString id, QString password)
     }
 }
 
+void AccountBook::addAccount(QString pass, QString id)
+{
+    Account tmp;
+    tmp.Balance = 0;
+    tmp.password = pass;
+    entry.emplace(id,tmp);
+}
+

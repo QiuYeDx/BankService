@@ -39,6 +39,13 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(btn_login, SIGNAL(clicked()), this, SLOT(logIn()));
     QObject::connect(btn_reg, SIGNAL(clicked()), ui_register, SLOT(showUp()));
 
+    ab.load();
+    auto it = ab.entry.begin();
+    qDebug() << it->first <<Qt::endl;
+    qDebug() << it->second.password <<Qt::endl;
+
+
+
 }
 
 MainWindow::~MainWindow()

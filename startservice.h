@@ -8,6 +8,10 @@
 #include <QGroupBox>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include "accountbook.h"
+#include <QMessageBox>
+extern AccountBook ab;
+
 
 namespace Ui {
 class StartService;
@@ -23,7 +27,7 @@ public:
 
 public slots:
     void login();
-    void chooseServiceType(int index);
+    void chooseServiceType();
 
 private:
     Ui::StartService *ui;

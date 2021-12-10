@@ -11,9 +11,12 @@
 #include <QTextStream>
 #include "counter.h"
 #include <QMessageBox>
+#include "accountbook.h"
+
 
 extern int norm_cnt;
 extern int spec_cnt;
+extern AccountBook ab;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
