@@ -88,7 +88,7 @@ void Windows::Service(){
         //结束业务
         counters[(label_2->text()).toInt()-1].user->tm_end = QDateTime::currentDateTime();
         //user内容存盘
-        qDebug()<<"开始写文件"<<endl;
+        qDebug()<<"开始写文件";
 
         QDate date=QDate::currentDate();
         QFile file(filepath+"/result"+date.toString("yyyyMMdd")+".txt");
@@ -102,7 +102,7 @@ void Windows::Service(){
             <<counters[(label_2->text()).toInt()-1].user->tm_end.toString("hhmmss")<<endl;
         }
         file.close();
-        qDebug()<<"成功写文件"<<endl;
+        qDebug()<<"成功写文件";
         ui_takeNumber_ptr->popItem(ui_takeNumber_ptr->getRowById(counters[(label_2->text()).toInt()-1].user->ID));
         delete(counters[(label_2->text()).toInt()-1].user);
         counters[(label_2->text()).toInt()-1].user=nullptr;

@@ -32,7 +32,6 @@ HEADERS += \
     mainmenu.h \
     mainwindow.h \
     quene.h \
-    quenemanager.h \
     register.h \
     startservice.h \
     takenumber.h \
