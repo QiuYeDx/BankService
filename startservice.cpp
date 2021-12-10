@@ -75,10 +75,12 @@ StartService::StartService(int ID):
     label_money = new QLabel(this);
     label_money->setGeometry(95, 225, 40, 30);
     label_money->setText("金额:");
+    label_money->hide();
 
     line_money =new QLineEdit(this);
     line_money->setGeometry(135, 225, 60, 30);
     line_money->setEchoMode(QLineEdit::Password);
+    line_money->hide();
 
     btn_4 = new QPushButton(this);
     btn_4->setGeometry(257, 170, 35, 40);
@@ -92,6 +94,18 @@ StartService::StartService(int ID):
 
 void StartService::chooseServiceType()
 {
+    if(btn_1->isChecked()){
+        label_money->hide();
+        line_money->hide();
+    }
+    if(btn_2->isChecked()){
+        label_money->show();
+        line_money->show();
+    }
+    if(btn_3->isChecked()){
+        label_money->show();
+        line_money->show();
+    }
 
 }
 
