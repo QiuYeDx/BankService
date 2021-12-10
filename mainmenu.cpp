@@ -28,7 +28,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
     btn_4 = new QPushButton(this);
     btn_4->setGeometry(60, 220, 180, 40);
-    btn_4->setText("存储");
+    btn_4->setText("退出");
 
     QObject::connect(btn_1, SIGNAL(clicked()), this, SLOT(showQuHao()));
     QObject::connect(btn_2, SIGNAL(clicked()), this, SLOT(showChuangKou()));
@@ -56,4 +56,6 @@ void MainMenu::showZhanShi(){
 
 void MainMenu::showCunChu(){
     ui_storage->show();
+    QApplication* app;
+    app->exit(0);
 }
