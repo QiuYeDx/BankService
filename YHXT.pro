@@ -22,7 +22,7 @@ SOURCES += \
     user.cpp \
     showresult.cpp \
     storage.cpp \
-    windows.cpp
+    windows.cpp \
     transaction.cpp
 
 HEADERS += \

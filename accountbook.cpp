@@ -1,6 +1,7 @@
 #include "accountbook.h"
 using namespace Qt;
 
+extern QString filepath;
 AccountBook::AccountBook()
 {
     //todo
@@ -8,10 +9,11 @@ AccountBook::AccountBook()
 
 int AccountBook::save()
 {
-    QFile data("accountbook.txt");
+    QFile data(filepath+"/accountbook.txt");
     if(!data.open(QIODevice::WriteOnly | QIODevice::Text))
         return WRONG;
     QTextStream out(&data);
+    out << this->entry.size() << endl;
     for(auto it = this->entry.begin();it!=this->entry.end();it++)
     {
         out << it->first << endl;
@@ -25,6 +27,45 @@ int AccountBook::save()
             out << ita->type <<endl;
         }
     }
+    return SUCCESS;
+
+}
+
+int AccountBook::load()
+{
+    QFile data(filepath+"/accountbook.txt");
+    if(!data.open(QIODevice::ReadOnly | QIODevice::Text))
+        return WRONG;
+    QTextStream in(&data);
+    int n = in.readLine().toInt();
+    for(int i = 0;i<n;i++)
+    {
+        QString ID = in.readLine();
+        QString password = in.readLine();
+        float balance = in.readLine().toFloat();
+        int k = in.readLine().toInt();
+        std::vector<Transaction> t;
+        t.resize(k);
+
+        QDateTime time;
+        float amount;
+        int type;
+        for(int j = 0;j<k;j++)
+        {
+            time = QDateTime::fromString(in.readLine());
+            amount = in.readLine().toFloat();
+            type = in.readLine().toInt();
+            t.emplace_back(time, amount, type);
+        }
+        Account tmp;
+        tmp.Balance = balance;
+        tmp.password = password;
+        tmp.container = t;
+        this->entry.emplace(ID, tmp);
+    }
+
+
+    return SUCCESS;
 
 }
 
@@ -39,5 +80,4 @@ Account* AccountBook::query(QString id, QString password)
         return &(this->entry[id]);
     }
 }
-
 
