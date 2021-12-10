@@ -21,11 +21,11 @@ StartService::StartService(int ID):
     //this->setAttribute(Qt::WA_DeleteOnClose, true);
 
     label_1 = new QLabel(this);
-    label_1->setGeometry(120, 25, 120, 30);
+    label_1->setGeometry(120, 22, 120, 30);
     label_1->setText("窗口号:");
 
     label_2 = new QLabel(this);
-    label_2->setGeometry(180, 25, 120, 30);
+    label_2->setGeometry(180, 22, 120, 30);
     label_2->setText(QString::number(ID));
 
     btn_1 = new QRadioButton(this);
@@ -48,14 +48,17 @@ StartService::StartService(int ID):
     group_1 = new QGroupBox(this);
     group_1->setGeometry(10, 125, 75, 90);
     group_1->setLayout(layout_1);
+    //group_1->setStyleSheet("border-radius: 7px;background-color:rgb(8,10,9)");
 
     group_2 = new QGroupBox(this);
-    group_2->setGeometry(40,25,220,80);
+    group_2->setGeometry(40,18,220,95);
+    //group_2->setStyleSheet("border-radius: 7px;background-color:rgb(180,180,180)");
 
 
     label_info = new QLabel(this);
-    label_info->setGeometry(35, 50, 120, 30);
+    label_info->setGeometry(140, 60, 120, 30);
     label_info->setText("信息显示！！");
+    label_info->hide();
 
     label_user = new QLabel(this);
     label_user->setGeometry(95, 135, 120, 30);
@@ -66,10 +69,10 @@ StartService::StartService(int ID):
     label_pwd->setText("密码:");
 
     line_user =new QLineEdit(this);
-    line_user->setGeometry(135, 135, 120, 30);
+    line_user->setGeometry(133, 135, 120, 30);
 
     line_pwd =new QLineEdit(this);
-    line_pwd->setGeometry(135, 175, 120, 30);
+    line_pwd->setGeometry(133, 175, 120, 30);
     line_pwd->setEchoMode(QLineEdit::Password);
 
     label_money = new QLabel(this);
@@ -79,7 +82,7 @@ StartService::StartService(int ID):
 
     line_money =new QLineEdit(this);
     line_money->setGeometry(135, 225, 60, 30);
-    line_money->setEchoMode(QLineEdit::Password);
+    //line_money->setEchoMode(QLineEdit::Password);
     line_money->hide();
 
     btn_4 = new QPushButton(this);
@@ -106,7 +109,6 @@ void StartService::chooseServiceType()
         label_money->show();
         line_money->show();
     }
-
 }
 
 void StartService::setType(int index)
@@ -116,8 +118,21 @@ void StartService::setType(int index)
     if(type==1)
     {
         group_1->hide();
+        label_info->setText("开户");
+        label_info->show();
+        label_user->setGeometry(70, 135, 120, 30);
+        label_pwd->setGeometry(70, 175, 120, 30);
+        line_user->setGeometry(110, 135, 120, 30);
+        line_pwd->setGeometry(110, 175, 120, 30);
+        btn_4->setGeometry(240, 170, 35, 40);
     }else{
         group_1->show();
+        label_user->setGeometry(95, 135, 120, 30);
+        label_pwd->setGeometry(95, 175, 120, 30);
+        line_user->setGeometry(133, 135, 120, 30);
+        line_pwd->setGeometry(133, 175, 120, 30);
+        btn_4->setGeometry(257, 170, 35, 40);
+
     }
 }
 
@@ -125,8 +140,7 @@ void StartService::login()
 {
     QString username = line_user->text();
     QString password = line_pwd->text();
-//    qDebug() << username << Qt::endl;
-//    qDebug() << password << Qt::endl;
+
     if(ab.entry[username].password == password)
     {
 
