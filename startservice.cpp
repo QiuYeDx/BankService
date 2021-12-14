@@ -165,6 +165,16 @@ void StartService::login()
             else if(btn_2->isChecked()) //存款
             {
                 float t = line_money->text().toFloat();
+                if(t<=0)
+                {
+                    label_info->setText("请输入合法数额！");
+                    return;
+                }
+                if(t>100000)
+                {
+                         label_info->setText("超过100,000限额");
+                         return ;
+                }
                 int result = ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,1);
                 //label_info->setGeometry(120,60,300,30);
                 if(result==0)
@@ -174,6 +184,16 @@ void StartService::login()
             else if(btn_3->isChecked())//取款
             {
                 float t = line_money->text().toFloat();
+                if(t<=0)
+                {
+                    label_info->setText("请输入合法数额！");
+                    return;
+                }
+                if(t>50000)
+                {
+                         label_info->setText("超过50,000限额");
+                         return ;
+                }
                 int result = ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,-1);
                 if(result==0)
                     label_info->setText("成功取款 "+QString::number(t)+" 元");
