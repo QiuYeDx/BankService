@@ -21,11 +21,11 @@ StartService::StartService(int ID):
     //this->setAttribute(Qt::WA_DeleteOnClose, true);
 
     label_1 = new QLabel(this);
-    label_1->setGeometry(120, 22, 120, 30);
+    label_1->setGeometry(120, 5, 120, 30);
     label_1->setText("窗口号:");
 
     label_2 = new QLabel(this);
-    label_2->setGeometry(180, 22, 120, 30);
+    label_2->setGeometry(180, 5, 120, 30);
     label_2->setText(QString::number(ID));
 
     btn_1 = new QRadioButton(this);
@@ -51,13 +51,14 @@ StartService::StartService(int ID):
     //group_1->setStyleSheet("border-radius: 7px;background-color:rgb(8,10,9)");
 
     group_2 = new QGroupBox(this);
-    group_2->setGeometry(40,18,220,95);
+    group_2->setGeometry(20,10,260,110);
     //group_2->setStyleSheet("border-radius: 7px;background-color:rgb(180,180,180)");
 
 
     label_info = new QLabel(this);
-    label_info->setGeometry(80, 40, 120, 900);
     label_info->setText("信息显示！！");
+    label_info->setAlignment(Qt::AlignCenter);
+    label_info->setGeometry(25,25,250,105);
     label_info->hide();
 
     label_user = new QLabel(this);
@@ -141,34 +142,44 @@ void StartService::login()
     QString username = line_user->text();
     QString password = line_pwd->text();
 
-
 //    qDebug() << username << Qt::endl;
 //    qDebug() << password << Qt::endl;
     if(type == 0)
-
     {
+        qDebug()<<"type 0";
         if(ab.entry[username].password == password)
         {
             if(btn_1->isChecked()) //查询
             {
+
                 QString t="";
                 int k = ab.entry[username].container.size();
+                if(k>3) k=3;
                 for(int i = 0;i<k;i++)
                 {
-                    t += ("时间 "+ab.entry[username].container[i].time.toString() + "金额 " +QString::number(ab.entry[username].container[i].amount)  + "类型 "+(type==1?"存":"取")+"\n");
+                    t += (ab.entry[username].container[i].time.toString()  + (ab.entry[username].container[i].type==1?" 存 ":" 取 ") + QString::number(ab.entry[username].container[i].amount) +"元\n");
                 }
-                label_info->setText("余额"+QString::number(ab.entry[username].Balance)+ "\n近三次交易记录:" + "\n" + t);
+                //label_info->setGeometry(120,60,120,120);
+                qDebug()<<QString::number(ab.entry[username].Balance);
+                label_info->setText("余额 "+QString::number(ab.entry[username].Balance)+ "\n近三次交易记录:" + "\n" + t);
             }
             else if(btn_2->isChecked()) //存款
             {
                 float t = line_money->text().toFloat();
-                ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,1);
+                int result = ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,1);
+                //label_info->setGeometry(120,60,300,30);
+                if(result==0)
+                    label_info->setText("成功存款 "+QString::number(t)+" 元");
 
             }
             else //取款
             {
                 float t = line_money->text().toFloat();
-                ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,-1);
+                int result = ab.entry[username].makeTrans(QDateTime::currentDateTime(),t,-1);
+                if(result==0)
+                    label_info->setText("成功取款 "+QString::number(t)+" 元");
+                else
+                    label_info->setText("请检查余额！！！");
             }
         }
         else
@@ -180,6 +191,7 @@ void StartService::login()
     else
     {
         ab.addAccount(password, username);
+        //label_info->setGeometry(120,60,120,30);
         label_info->setText("注册成功");
         setType(0);
     }
