@@ -59,7 +59,7 @@ StartService::StartService(int ID):
     label_info->setText("信息显示！！");
     label_info->setAlignment(Qt::AlignCenter);
     label_info->setGeometry(25,25,250,105);
-    label_info->hide();
+    //label_info->hide();
 
     label_user = new QLabel(this);
     label_user->setGeometry(95, 135, 120, 30);
@@ -128,6 +128,7 @@ void StartService::setType(int index)
         btn_4->setGeometry(240, 170, 35, 40);
     }else{
         group_1->show();
+        label_info->show();
         label_user->setGeometry(95, 135, 120, 30);
         label_pwd->setGeometry(95, 175, 120, 30);
         line_user->setGeometry(133, 135, 120, 30);
@@ -151,7 +152,6 @@ void StartService::login()
         {
             if(btn_1->isChecked()) //查询
             {
-
                 QString t="";
                 int k = ab.entry[username].container.size();
                 if(k>3) k=3;

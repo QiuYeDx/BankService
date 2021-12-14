@@ -57,5 +57,6 @@ void MainMenu::showZhanShi(){
 void MainMenu::showCunChu(){
     ui_storage->show();
     QApplication* app;
+    ab.save();
     app->exit(0);
 }
