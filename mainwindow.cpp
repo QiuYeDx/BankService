@@ -41,8 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ab.load();
     auto it = ab.entry.begin();
-    qDebug() << it->first <<Qt::endl;
-    qDebug() << it->second.password <<Qt::endl;
+    //qDebug() << it->first <<Qt::endl;
+    //qDebug() << it->second.password <<Qt::endl;
 
 
 
