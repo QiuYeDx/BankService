@@ -13,8 +13,8 @@
 
 ## 部分展示
 ### 注册界面
-<img src="/src/注册界面.png" width="40%">注册界面</img>
+<img src="/src/注册界面.png" width="40%"></img>
 ### 登陆界面
-<img src="/src/登陆界面.png" width="40%">登陆界面</img>
+<img src="/src/登陆界面.png" width="40%"></img>
 ### 操作界面
-<img src="/src/操作界面.png" width="40%">操作界面</img>
+<img src="/src/操作界面.png" width="80%"></img>
