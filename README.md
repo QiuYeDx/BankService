@@ -13,8 +13,8 @@
 
 ## 部分展示
 ### 注册界面
-![注册界面](/src/注册界面.png)
+<img src="/src/注册界面.png" width="40%">注册界面</img>
 ### 登陆界面
-![登陆界面](/src/登陆界面.png)
+<img src="/src/登陆界面.png" width="40%">登陆界面</img>
 ### 操作界面
-![操作界面](/src/操作界面.png)
+<img src="/src/操作界面.png" width="40%">操作界面</img>
