@@ -154,10 +154,12 @@ void StartService::login()
             {
                 QString t="";
                 int k = ab.entry[username].container.size();
+                auto tmp = ab.entry[username].container.end();
                 if(k>3) k=3;
                 for(int i = 0;i<k;i++)
                 {
-                    t += (ab.entry[username].container[i].time.toString()  + (ab.entry[username].container[i].type==1?" 存 ":" 取 ") + QString::number(ab.entry[username].container[i].amount) +"元\n");
+                    tmp--;
+                    t += (tmp->time.toString()  + (tmp->type==1?" 存 ":" 取 ") + QString::number(tmp->amount) +"元\n");
                 }
                 //label_info->setGeometry(120,60,120,120);
                 qDebug()<<QString::number(ab.entry[username].Balance);

@@ -45,11 +45,10 @@ int AccountBook::load()
         float balance = in.readLine().toFloat();
         int k = in.readLine().toInt();
         std::vector<Transaction> t;
-        t.resize(k);
-
         QDateTime time;
         float amount;
         int type;
+
         for(int j = 0;j<k;j++)
         {
             time = QDateTime::fromString(in.readLine());
