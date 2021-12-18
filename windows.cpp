@@ -79,6 +79,7 @@ void Windows::Service(){
             ui_service = new StartService(label_2->text().toInt());
             ui_service->setType(counters[(label_2->text()).toInt()-1].user->type);
             ui_service->show();
+            ui_takeNumber_ptr->Tablesort();
             //showService();
             //btn_switch->setText("结束业务");
             //label_4->setText("业务办理中...");
@@ -146,6 +147,7 @@ void Windows::Service(){
         }
 
         updateInformation(label_2->text().toInt()-1);
+        ui_takeNumber_ptr->Tablesort();
     }
 }
 
